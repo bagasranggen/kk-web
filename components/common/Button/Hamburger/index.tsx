@@ -9,10 +9,21 @@ const SHOW_HELPER = false;
 
 export type HamburgerProps = {
     active?: boolean;
+    color?: 'dark' | 'light';
+    withBorder?: boolean;
 } & BaseProps;
 
-const Hamburger = ({ className, active, ...props }: HamburgerProps): React.ReactElement => {
+const Hamburger = ({
+    className,
+    color = 'dark',
+    withBorder = true,
+    active,
+    ...props
+}: HamburgerProps): React.ReactElement => {
     let btnClass: ArrayStringProps = ['btn btn--hamburger'];
+    if (color === 'dark') btnClass.push('btn--dark');
+    if (color === 'light') btnClass.push('btn--light');
+    if (withBorder) btnClass.push('btn--border');
     if (active) btnClass.push('btn--active');
     if (className) btnClass.push(className);
     btnClass = joinArrayString(btnClass);

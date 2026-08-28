@@ -1,13 +1,13 @@
 @layer components {
     .btn.btn--hamburger {
         @apply relative;
-        @apply inline-flex justify-center items-center  gap-0.5;
+        @apply inline-flex justify-center items-center gap-0.5;
         @apply rounded-full;
-        @apply border border-dark px-1;
+        @apply px-1 border border-transparent;
         @apply w-5 aspect-square;
 
         .btn__icon {
-            @apply w-0.5 h-0.5 border border-dark;
+            @apply w-0.5 h-0.5 border;
             @apply rounded-full;
 
             &.btn__icon--helper {
@@ -95,6 +95,28 @@
             .btn__icon:last-child {
                 @apply -rotate-45;
                 @apply top-1.5! right-[1.6rem]!;
+            }
+        }
+
+        &.btn--border {
+            &.btn--dark {
+                @apply border-dark;
+            }
+
+            &.btn--light {
+                @apply border-light;
+            }
+        }
+
+        &.btn--dark {
+            .btn__icon {
+                @apply border-dark;
+            }
+        }
+
+        &.btn--light {
+            .btn__icon {
+                @apply border-light;
             }
         }
     }
