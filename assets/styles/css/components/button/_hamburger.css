@@ -1,18 +1,14 @@
 @layer components {
     .btn.btn--hamburger {
         @apply relative;
-        @apply inline-flex justify-center items-center aspect-square gap-0.5;
+        @apply inline-flex justify-center items-center  gap-0.5;
         @apply rounded-full;
         @apply border border-dark px-1;
-        @apply w-5;
+        @apply w-5 aspect-square;
 
         .btn__icon {
-            /*@apply before:content-[''];*/
-            /*@apply before:block;*/
-            /*@apply after:content-[''];*/
-            /*@apply after:block;*/
-
-            @apply w-0.5 border border-dark;
+            @apply w-0.5 h-0.5 border border-dark;
+            @apply rounded-full;
 
             &.btn__icon--helper {
                 @apply border-red-500;
@@ -23,24 +19,23 @@
                 &:last-child {
                     @apply absolute;
                     @apply top-[calc(50%-0.25rem)];
-                    /*@apply top-1/2;*/
-                    /*@apply -translate-1/2;*/
                 }
 
                 &:first-child {
+                    @apply origin-top-left;
                     @apply left-[1.15rem];
                 }
 
                 &:last-child {
+                    @apply origin-top-right;
                     @apply right-[1.15rem];
                 }
             }
 
             &:first-child,
             &:last-child {
-                @apply transition-[top,left,right,rotate,width,height,border-radius];
-                @apply delay-[150ms,150ms,150ms,0ms,0ms,0ms,0ms];
-                /*@apply delay-[0ms,0ms,0ms,0ms,150ms,150ms,150ms];*/
+                @apply transition-[top,left,right,rotate,border-radius,width,height];
+                @apply delay-[300ms,300ms,300ms,150ms,150ms,0ms,0ms];
             }
 
             &:not(.btn__icon--x-helper):not(.btn__icon--helper):nth-of-type(4),
@@ -50,12 +45,16 @@
         }
 
         &:not(.btn--active) {
-            .btn__icon {
-                @apply rounded-full aspect-square;
+            .btn__icon--x-helper {
+                @apply hidden;
             }
         }
 
         &.btn--active {
+            .btn__icon--helper {
+                @apply hidden;
+            }
+
             .btn__icon--x-helper {
                 @apply absolute;
                 @apply top-1/2 left-1/2;
@@ -71,16 +70,11 @@
                 }
             }
 
-            /*.btn__icon.btn__icon--x-helper:nth-of-type(2) {*/
-            /*    @apply rotate-45;*/
-            /*}*/
-
             .btn__icon {
                 &:first-child,
                 &:last-child {
-                    @apply transition-[top,left,right,rotate,width,height,border-radius];
-                    /*@apply delay-[150ms,150ms,150ms,150ms,0ms,0ms,0ms];*/
-                    @apply delay-[0ms,0ms,0ms,150ms,150ms,150ms,150ms];
+                    @apply transition-[top,left,right,rotate,border-radius,width,height];
+                    @apply delay-[0ms,0ms,0ms,150ms,150ms,300ms,300ms];
                 }
             }
 
@@ -91,38 +85,17 @@
 
             .btn__icon:first-child,
             .btn__icon:last-child {
-                @apply w-2.5 rounded-2xl;
+                @apply w-2.5 h-[0.2rem] rounded-2xl;
             }
 
             .btn__icon:first-child {
-                @apply origin-top-left;
                 @apply rotate-45;
-                /*@apply top-[2.4rem]! left-[2.4rem]!;*/
-                @apply top-[1.5rem]! left-[1.6rem]!;
+                @apply top-1.5! left-[1.6rem]!;
             }
             .btn__icon:last-child {
-                @apply origin-top-right;
                 @apply -rotate-45;
-                @apply top-[1.5rem]! right-[1.6rem]!;
-                /*@apply right-[-0.1rem]!;*/
-                /*@apply top-[2.4rem] left-[2.4rem];*/
+                @apply top-1.5! right-[1.6rem]!;
             }
-
-            /*    .btn__icon:nth-child(1),*/
-            /*    .btn__icon:nth-child(3) {*/
-            /*        @apply absolute;*/
-            /*        @apply top-1/2 left-1/2;*/
-            /*        @apply -translate-1/2;*/
-            /*        @apply w-2.5 h-[0.2rem] rounded-2xl bg-dark;*/
-            /*    }*/
-
-            /*    .btn__icon:nth-child(1) {*/
-            /*        @apply rotate-45;*/
-            /*    }*/
-
-            /*    .btn__icon:nth-child(3) {*/
-            /*        @apply -rotate-45;*/
-            /*    }*/
         }
     }
 }
