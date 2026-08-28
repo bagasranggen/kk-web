@@ -13,7 +13,7 @@ const meta = {
         layout: 'centered',
     },
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-    tags: ['autodocs'],
+    // tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/api/arg-types
     argTypes: {},
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
@@ -25,8 +25,43 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 
-export const Arrow: StoryObj<typeof Icon.Arrow> = {
+type ArrowStory = StoryObj<typeof Icon.Arrow>;
+
+const arrowArgsTypes: Meta<typeof Icon.Arrow>['argTypes'] = {
+    size: {
+        options: ['md', 'lg'],
+        control: { type: 'select' },
+    },
+    color: {
+        options: ['light', 'dark'],
+        control: { type: 'select' },
+    },
+};
+
+export const Arrow: ArrowStory = {
     args: {},
+    argTypes: arrowArgsTypes,
+    render: (args) => {
+        return <Icon.Arrow {...args} />;
+    },
+};
+
+export const ArrowDark: ArrowStory = {
+    argTypes: arrowArgsTypes,
+    args: {
+        color: 'dark',
+    },
+    render: (args) => {
+        return <Icon.Arrow {...args} />;
+    },
+};
+
+export const ArrowDarkLarge: ArrowStory = {
+    argTypes: arrowArgsTypes,
+    args: {
+        color: 'dark',
+        size: 'lg',
+    },
     render: (args) => {
         return <Icon.Arrow {...args} />;
     },
