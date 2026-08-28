@@ -1,5 +1,6 @@
 @layer components {
     .btn.btn--block {
+        @apply overflow-hidden;
         @apply inline-flex items-center gap-3;
         @apply border;
         @apply uppercase;
@@ -7,10 +8,180 @@
         @apply ps-1.5 pe-0.5 pt-0.5 pb-[0.4rem];
 
         .btn__icon {
+            @apply relative;
             @apply flex justify-end;
-            @apply bg-dark;
             @apply w-2 aspect-square;
             @apply pt-[0.4rem] pe-[0.4rem];
+
+            svg {
+                @apply z-10;
+            }
+
+            &:after {
+                @apply pointer-events-none;
+                @apply absolute;
+                @apply w-full aspect-square;
+                @apply top-1/2 left-1/2;
+                @apply -translate-y-1/2 -translate-x-1/2;
+                @apply transition-transform;
+            }
+        }
+
+        &.btn--lg {
+            @apply text-[2.2rem] tracking-0.5;
+            @apply ps-2 pb-0.5;
+
+            .btn__icon {
+                @apply w-3.5;
+                @apply pt-[0.65rem] pe-[0.65rem];
+            }
+        }
+
+        &.btn--animate {
+            &:hover {
+                .btn__icon:after {
+                    @apply scale-(--btn-block-scale);
+                }
+            }
+
+            .btn__icon:after {
+                @apply content-[''];
+            }
+
+            .btn__text {
+                @apply lg:transition-colors;
+                @apply z-10;
+            }
+        }
+
+        &.btn--active {
+            &.btn--dark {
+                @apply bg-dark;
+
+                .btn__text {
+                    @apply text-light;
+                }
+            }
+
+            &.btn--light {
+                @apply bg-light;
+
+                .btn__text {
+                    @apply text-dark;
+                }
+            }
+
+            &.btn--primary {
+                @apply bg-kk-primary;
+
+                .btn__text {
+                    @apply text-light;
+                }
+            }
+
+            &.btn--accent {
+                @apply bg-kk-accent-dark;
+
+                .btn__text {
+                    @apply text-light;
+                }
+            }
+        }
+
+        &.btn--dark {
+            @apply max-lg:bg-dark  border-dark;
+
+            .btn__text {
+                @apply max-lg:text-light;
+            }
+
+            .btn__icon {
+                @apply bg-dark;
+
+                &:after {
+                    @apply bg-dark;
+                }
+            }
+
+            &.btn--animate {
+                &:hover {
+                    .btn__text {
+                        @apply lg:text-light;
+                    }
+                }
+            }
+        }
+
+        &.btn--light {
+            @apply max-lg:bg-light border-light;
+
+            .btn__text {
+                @apply text-dark lg:text-light;
+            }
+
+            .btn__icon {
+                @apply bg-light;
+
+                &:after {
+                    @apply bg-light;
+                }
+            }
+
+            &.btn--animate {
+                &:hover {
+                    .btn__text {
+                        @apply lg:text-dark;
+                    }
+                }
+            }
+        }
+
+        &.btn--primary {
+            @apply max-lg:bg-kk-primary  border-kk-primary;
+
+            .btn__text {
+                @apply text-light lg:text-kk-primary;
+            }
+
+            .btn__icon {
+                @apply bg-kk-primary;
+
+                &:after {
+                    @apply bg-kk-primary;
+                }
+            }
+
+            &.btn--animate {
+                &:hover {
+                    .btn__text {
+                        @apply lg:text-light;
+                    }
+                }
+            }
+        }
+
+        &.btn--accent {
+            @apply max-lg:bg-kk-accent-dark  border-kk-accent-dark;
+
+            .btn__text {
+                @apply text-light lg:text-kk-accent-dark;
+            }
+
+            .btn__icon {
+                @apply bg-kk-accent-dark;
+
+                &:after {
+                    @apply bg-kk-accent-dark;
+                }
+            }
+
+            &.btn--animate {
+                &:hover {
+                    .btn__text {
+                        @apply lg:text-light;
+                    }
+                }
+            }
         }
     }
 }

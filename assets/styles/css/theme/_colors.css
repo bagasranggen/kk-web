@@ -1,7 +1,9 @@
 @theme {
     --color-dark: #171513;
     --color-light: #f5f2ec;
-    /*--color-sekar-primary: #0a5834;*/
+    --color-kk-primary: #bf6507;
+    --color-kk-accent-dark: #5c3208;
+    --color-kk-accent-light: #e8c89f;
     /*--color-sekar-secondary: #9e9288;*/
     /*--color-sekar-accent: #d8cfc4;*/
 }
