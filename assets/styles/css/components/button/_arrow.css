@@ -1,0 +1,70 @@
+@theme {
+    --animate-first-arrow: first-arrow 2s linear infinite;
+    --animate-second-arrow: second-arrow 2s linear infinite;
+
+    @keyframes first-arrow {
+        0% {
+            clip-path: inset(100% 0 0 0);
+        }
+        25% {
+            clip-path: inset(0% 0 0% 0);
+        }
+        100% {
+            clip-path: inset(0% 0 0% 0);
+        }
+    }
+
+    @keyframes second-arrow {
+        0% {
+            clip-path: inset(0 0 0 100%);
+        }
+        25% {
+            clip-path: inset(0 0 0 100%);
+        }
+        32% {
+            clip-path: inset(0 0 0 0%);
+        }
+        100% {
+            clip-path: inset(0 0 0 0%);
+        }
+    }
+}
+
+@layer components {
+    .btn.btn--arrow {
+        @apply relative;
+        @apply [writing-mode:vertical-rl];
+        @apply rotate-180;
+
+        @apply after:content-[''];
+        @apply after:block;
+        @apply after:min-h-10  after:h-full after:w-[0.1rem];
+        @apply after:animate-first-arrow;
+
+        @apply before:content-[''];
+        @apply before:absolute;
+        @apply before:rotate-[-59deg];
+        @apply before:top-[0.8rem] before:right-[0.05rem];
+        @apply before:-translate-x-1/2 before:-translate-y-1/2;
+        @apply before:w-2 before:h-[0.1rem];
+        @apply before:animate-second-arrow;
+
+        .btn__text {
+            @apply block;
+            @apply text-end;
+            @apply text-[1rem] uppercase font-extrabold tracking-0.2;
+            @apply ps-5;
+        }
+
+        &.btn--dark {
+            @apply after:bg-dark;
+            @apply before:bg-dark;
+        }
+
+        &.btn--light {
+            @apply text-light;
+            @apply after:bg-light;
+            @apply before:bg-light;
+        }
+    }
+}
