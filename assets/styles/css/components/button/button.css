@@ -1,2 +1,9 @@
 @import './_arrow.css';
 @import './_block.css';
+@import './_hamburger.css';
+
+@layer components {
+    .btn {
+        @apply cursor-pointer;
+    }
+}
