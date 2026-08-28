@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@import './reset/reset.css';
+@import './theme/theme.css';
+@import './components/components.css';
+
 /*:root {*/
 /*    --background: #ffffff;*/
 /*    --foreground: #171717;*/

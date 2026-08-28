@@ -1,0 +1,16 @@
+@layer components {
+    .btn.btn--block {
+        @apply inline-flex items-center gap-3;
+        @apply border;
+        @apply uppercase;
+        @apply text-[1.4rem] font-bold tracking-0.3;
+        @apply ps-1.5 pe-0.5 pt-0.5 pb-[0.4rem];
+
+        .btn__icon {
+            @apply flex justify-end;
+            @apply bg-dark;
+            @apply w-2 aspect-square;
+            @apply pt-[0.4rem] pe-[0.4rem];
+        }
+    }
+}

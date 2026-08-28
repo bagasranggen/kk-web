@@ -1,6 +1,19 @@
 import type { Preview } from '@storybook/nextjs-vite';
+import { DM_Sans } from 'next/font/google';
+
+const dmSans = DM_Sans({
+    variable: '--font-dm-sans',
+    subsets: ['latin'],
+});
 
 const preview: Preview = {
+    decorators: [
+        (Story) => (
+            <main className={`${dmSans.variable}`}>
+                <Story />
+            </main>
+        ),
+    ],
     parameters: {
         controls: {
             matchers: {
