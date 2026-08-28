@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
 
-import Button from './index';
+import Block from './index';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-    title: 'Common/Button',
-    component: Button,
+    title: 'Common/Button/Block',
+    component: Block,
     parameters: {
         // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
@@ -15,10 +15,22 @@ const meta = {
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/api/arg-types
-    argTypes: {},
+    argTypes: {
+        color: {
+            options: ['light', 'dark'],
+            control: { type: 'select' },
+        },
+        size: {
+            options: ['md', 'lg'],
+            control: { type: 'select' },
+        },
+        active: {
+            control: { type: 'boolean' },
+        },
+    },
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
     // args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Block>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -27,66 +39,30 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         as: 'anchor',
-        children: 'anchor',
-        href: '#',
-    },
-};
-
-type BlockStory = StoryObj<typeof Button.Block>;
-
-const blockArgsTypes: Meta<typeof Button.Block>['argTypes'] = {
-    color: {
-        options: ['light', 'dark'],
-        control: { type: 'select' },
-    },
-    size: {
-        options: ['md', 'lg'],
-        control: { type: 'select' },
-    },
-    active: {
-        control: { type: 'boolean' },
-    },
-};
-
-export const Block: BlockStory = {
-    argTypes: blockArgsTypes,
-    args: {
-        as: 'anchor',
         children: 'Block Anchor',
         href: '#',
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
-export const BlockLarge: BlockStory = {
-    argTypes: blockArgsTypes,
+
+export const Large: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
         href: '#',
         size: 'lg',
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockActive: BlockStory = {
-    argTypes: blockArgsTypes,
+export const Active: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
         href: '#',
         active: true,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockLight: BlockStory = {
-    argTypes: blockArgsTypes,
+export const Light: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
@@ -94,13 +70,9 @@ export const BlockLight: BlockStory = {
         color: 'light',
         active: false,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockLightActive: BlockStory = {
-    argTypes: blockArgsTypes,
+export const LightActive: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
@@ -108,13 +80,9 @@ export const BlockLightActive: BlockStory = {
         color: 'light',
         active: true,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockPrimary: BlockStory = {
-    argTypes: blockArgsTypes,
+export const Primary: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
@@ -122,13 +90,9 @@ export const BlockPrimary: BlockStory = {
         color: 'primary',
         active: false,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockPrimaryActive: BlockStory = {
-    argTypes: blockArgsTypes,
+export const PrimaryActive: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
@@ -136,13 +100,9 @@ export const BlockPrimaryActive: BlockStory = {
         color: 'primary',
         active: true,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockAccent: BlockStory = {
-    argTypes: blockArgsTypes,
+export const Accent: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
@@ -150,21 +110,14 @@ export const BlockAccent: BlockStory = {
         color: 'accent',
         active: false,
     },
-    render: (args) => {
-        return <Button.Block {...args} />;
-    },
 };
 
-export const BlockAccentActive: BlockStory = {
-    argTypes: blockArgsTypes,
+export const AccentActive: Story = {
     args: {
         as: 'anchor',
         children: 'Block Anchor',
         href: '#',
         color: 'accent',
         active: true,
-    },
-    render: (args) => {
-        return <Button.Block {...args} />;
     },
 };
