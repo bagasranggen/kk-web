@@ -34,13 +34,13 @@
 
             &:first-child,
             &:last-child {
-                @apply transition-[top,left,right,rotate,border-radius,width,height];
-                @apply delay-[300ms,300ms,300ms,150ms,150ms,0ms,0ms];
+                @apply transition-[top,left,right,rotate,border-radius,width,height,border-color];
+                @apply delay-[300ms,300ms,300ms,150ms,150ms,0ms,0ms,0ms];
             }
 
             &:not(.btn__icon--x-helper):not(.btn__icon--helper):nth-of-type(4),
             &:not(.btn__icon--x-helper):not(.btn__icon--helper):nth-of-type(2) {
-                @apply transition-opacity;
+                @apply transition-[opacity,border-color];
             }
         }
 
@@ -73,8 +73,8 @@
             .btn__icon {
                 &:first-child,
                 &:last-child {
-                    @apply transition-[top,left,right,rotate,border-radius,width,height];
-                    @apply delay-[0ms,0ms,0ms,150ms,150ms,300ms,300ms];
+                    @apply transition-[top,left,right,rotate,border-radius,width,height,border-color];
+                    @apply delay-[0ms,0ms,0ms,150ms,150ms,300ms,300ms,0ms];
                 }
             }
 
