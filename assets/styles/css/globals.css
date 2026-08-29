@@ -3,6 +3,7 @@
 @import './reset/reset.css';
 @import './theme/theme.css';
 @import './components/components.css';
+@import './layout/layout.css';
 
 /*:root {*/
 /*    --background: #ffffff;*/

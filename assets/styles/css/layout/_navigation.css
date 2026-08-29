@@ -1,0 +1,46 @@
+@layer components {
+    nav.nav {
+        @apply py-2;
+        @apply translate-y-0;
+        @apply transition-[background-color,translate];
+        @apply duration-[500ms,500ms];
+
+        &.nav--center:not(.nav--hide) {
+            @apply bg-kk-primary;
+        }
+
+        &.nav--hide {
+            @apply -translate-y-full;
+        }
+
+        .nav__container {
+            @apply flex items-center justify-between;
+        }
+
+        .nav__logo {
+            @apply max-w-22;
+
+            svg path {
+                @apply transition-colors;
+                @apply duration-500;
+            }
+        }
+
+        .nav__hamburger {
+            @apply transition-colors;
+            @apply duration-500;
+
+            .btn__icon {
+                &:not(.btn__icon--x-helper):not(.btn__icon--helper):nth-of-type(4),
+                &:not(.btn__icon--x-helper):not(.btn__icon--helper):nth-of-type(2) {
+                    @apply duration-[150ms,500ms];
+                }
+
+                &:first-child,
+                &:last-child {
+                    @apply duration-[150ms,150ms,150ms,150ms,150ms,150ms,150ms,500ms];
+                }
+            }
+        }
+    }
+}
