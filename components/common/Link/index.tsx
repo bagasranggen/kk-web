@@ -3,10 +3,9 @@ import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
 
 import { BaseComponentProps } from '@/libs/@types';
 
-export type LinkProps = BaseComponentProps<
-    HTMLAnchorElement,
-    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> & NextLinkProps
->;
+export type LinkProps = BaseComponentProps<HTMLAnchorElement> &
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> &
+    NextLinkProps;
 
 const hrefReplacer = (href: NextLinkProps['href']) => {
     let hrefUpdate: NextLinkProps['href'] = href;

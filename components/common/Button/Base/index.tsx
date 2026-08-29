@@ -9,15 +9,13 @@ export type BaseAnchorProps = {
     linkAs?: LinkProps['as'];
 } & Omit<LinkProps, 'as'>;
 
-export type BaseButtonProps = BaseComponentProps<
-    HTMLButtonElement,
-    { as: 'button' } & React.ButtonHTMLAttributes<HTMLButtonElement>
->;
+export type BaseButtonProps = {
+    as: 'button';
+} & (React.ButtonHTMLAttributes<HTMLButtonElement> & BaseComponentProps<HTMLButtonElement>);
 
-export type BaseDivProps = BaseComponentProps<
-    HTMLDivElement,
-    { as: undefined } & React.ButtonHTMLAttributes<HTMLDivElement>
->;
+export type BaseDivProps = {
+    as: undefined;
+} & (React.ButtonHTMLAttributes<HTMLDivElement> & BaseComponentProps<HTMLDivElement>);
 
 export type BaseProps = BaseAnchorProps | BaseButtonProps | BaseDivProps;
 
