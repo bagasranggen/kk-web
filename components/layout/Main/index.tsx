@@ -1,17 +1,19 @@
 import React, { PropsWithChildren } from 'react';
 import Navigation from '@/components/layout/Navigation';
-import Footer from '@/components/layout/Footer';
+import Footer, { FooterProps } from '@/components/layout/Footer';
 
-export type MainProps = {} & PropsWithChildren;
+export type MainProps = {
+    footer?: FooterProps;
+} & PropsWithChildren;
 
-const Main = ({ children }: MainProps): React.ReactElement => {
+const Main = ({ footer, children }: MainProps): React.ReactElement => {
     return (
         <>
             <Navigation className="fixed w-full top-0" />
 
             <main>{children}</main>
 
-            <Footer />
+            <Footer {...footer} />
         </>
     );
 };

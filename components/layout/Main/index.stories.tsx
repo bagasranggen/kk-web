@@ -4,6 +4,7 @@ import { fn } from 'storybook/test';
 
 import Main from './index';
 import Container from '@/components/common/Container';
+import { LIST_SOCIAL_MEDIA } from '@/components/common/List/SocialMedia/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -27,6 +28,9 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
     args: {
+        footer: {
+            socialMedia: LIST_SOCIAL_MEDIA,
+        },
         children: (
             <>
                 <Container
