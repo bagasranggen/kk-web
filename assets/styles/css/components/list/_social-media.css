@@ -1,0 +1,31 @@
+@layer components {
+    .list.list--social-media {
+        @apply flex gap-1.5;
+
+        svg {
+            @apply h-auto;
+        }
+
+        &.list--vertical {
+            @apply flex-col;
+        }
+
+        &.list--sm {
+            svg {
+                @apply w-[1.8rem];
+            }
+        }
+
+        &.list--md {
+            svg {
+                @apply w-[2.4rem];
+            }
+        }
+
+        &.list--lg {
+            svg {
+                @apply w-3.5;
+            }
+        }
+    }
+}
