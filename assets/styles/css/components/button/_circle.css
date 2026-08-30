@@ -1,0 +1,27 @@
+@layer components {
+    .btn.btn--circle {
+        @apply inline-flex justify-center items-center;
+        @apply border;
+        @apply aspect-square;
+        @apply rounded-full;
+        @apply lg:transition-colors;
+
+        &.btn--sm {
+            @apply p-1;
+        }
+
+        &.btn--md {
+            @apply p-1.5;
+        }
+
+        &.btn--dark {
+            @apply border-dark;
+            @apply lg:hover:bg-dark;
+        }
+
+        &.btn--light {
+            @apply border-light;
+            @apply lg:hover:bg-light;
+        }
+    }
+}
