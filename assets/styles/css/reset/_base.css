@@ -1,6 +1,6 @@
 @layer base {
     body {
-        @apply antialiased  text-dark text-base font-dm-sans;
+        @apply antialiased text-dark text-base font-dm-sans;
     }
 
     body:not(.sb-show-main) {
@@ -15,8 +15,4 @@
     /*button {*/
     /*    @apply cursor-pointer;*/
     /*}*/
-
-    button {
-        /*@apply focus-visible:outline-0;*/
-    }
 }

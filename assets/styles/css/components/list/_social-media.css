@@ -1,6 +1,6 @@
 @layer components {
     .list.list--social-media {
-        @apply flex gap-1.5;
+        @apply flex flex-wrap gap-1.5;
 
         svg {
             @apply h-auto;

@@ -1,24 +1,30 @@
 @layer components {
     .modal.modal--menu {
         @apply bg-kk-primary text-light;
-        @apply h-screen;
+        @apply h-screen max-h-screen overflow-y-auto;
         @apply flex items-center;
+        @apply py-header;
 
         .modal__list {
             li {
-                @apply not-first:mt-3;
+                @apply not-first:mt-1 md:not-first:mt-3;
 
                 a {
                     @apply block;
                     @apply lg:transition-[padding-left];
                     @apply lg:hover:ps-5;
+
+                    .heading {
+                        @apply max-md:text-[4rem] max-md:tracking-[0.9rem];
+                    }
                 }
             }
         }
 
         .modal__title {
             @apply fixed left-0;
-            @apply leading-7;
+            @apply max-sm:text-[6rem] max-sm:tracking-[2rem];
+            @apply max-sm:leading-4.5 leading-7;
             @apply [writing-mode:vertical-lr];
         }
     }

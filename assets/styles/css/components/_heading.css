@@ -12,7 +12,7 @@
         }
 
         &.heading--page {
-            @apply text-[10rem] tracking-[1.2rem];
+            @apply text-[10rem] tracking-[3rem];
             @apply uppercase;
         }
     }

@@ -17,7 +17,7 @@ const meta = {
     // More on argTypes: https://storybook.js.org/docs/api/arg-types
     argTypes: {},
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-    args: { onClick: fn() },
+    // args: { onClick: fn() },
 } satisfies Meta<typeof Navigation>;
 
 export default meta;

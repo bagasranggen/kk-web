@@ -1,5 +1,8 @@
-import type { Preview } from '@storybook/nextjs-vite';
 import { DM_Sans, Bodoni_Moda } from 'next/font/google';
+
+import type { Preview } from '@storybook/nextjs-vite';
+
+import ContextProvider from '../store/context';
 
 const dmSans = DM_Sans({
     variable: '--font-dm-sans',
@@ -21,7 +24,10 @@ const preview: Preview = {
                         --font-bodoni-moda: "${bodoniModa.style.fontFamily}"; 
                     }
                 `}</style>
-                <Story />
+
+                <ContextProvider>
+                    <Story />
+                </ContextProvider>
             </>
         ),
     ],

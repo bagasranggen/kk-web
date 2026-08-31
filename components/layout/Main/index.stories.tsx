@@ -5,6 +5,7 @@ import { fn } from 'storybook/test';
 import Main from './index';
 import Container from '@/components/common/Container';
 import { LIST_SOCIAL_MEDIA } from '@/components/common/List/SocialMedia/index.mock';
+import { LIST_MENU } from '@/components/layout/Menu/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -31,17 +32,21 @@ export const Default: Story = {
         footer: {
             socialMedia: LIST_SOCIAL_MEDIA,
         },
+        menu: {
+            social: LIST_SOCIAL_MEDIA,
+            items: LIST_MENU,
+        },
         children: (
             <>
                 <Container
                     as="section"
-                    style={{ paddingTop: '15rem', marginTop: '5rem' }}>
+                    style={{ paddingTop: 'var(--header-height)', marginTop: '5rem' }}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam aspernatur debitis dicta earum
                     ex fugit laboriosam laudantium nesciunt obcaecati odit, officiis placeat provident quae sequi ullam
                     veniam voluptas voluptates!
                 </Container>
 
-                <section style={{ marginTop: '5rem', marginBottom: '10rem', backgroundColor: 'red' }}>
+                <section style={{ marginTop: '5rem', paddingBlock: '5rem', backgroundColor: 'red' }}>
                     <Container as="section">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cupiditate distinctio dolores
                         rerum. A asperiores aspernatur iste iusto nam possimus quia. Accusamus accusantium adipisci
@@ -61,6 +66,26 @@ export const Default: Story = {
                         dignissimos doloremque error non omnis quia reiciendis rem tenetur vitae!
                     </Container>
                 </section>
+
+                <Container
+                    as="section"
+                    style={{ marginTop: '5rem', marginBottom: '10rem' }}>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cupiditate distinctio dolores rerum. A
+                    asperiores aspernatur iste iusto nam possimus quia. Accusamus accusantium adipisci alias aliquid
+                    architecto consequatur eaque esse eveniet facere ipsum, magnam maxime neque nisi perspiciatis
+                    praesentium quos rerum sequi similique tempore tenetur totam veniam veritatis vitae. Amet assumenda
+                    culpa cum, cupiditate, debitis deserunt distinctio, dolore doloremque eaque error eum expedita
+                    fugiat fugit harum ipsum iste laudantium libero maiores nisi nulla numquam omnis possimus provident
+                    quaerat qui quos repellendus saepe sed unde ut? Culpa enim optio voluptatem. Architecto, atque
+                    dignissimos dolorem error impedit ipsam rem saepe? A accusamus architecto aspernatur atque, culpa
+                    debitis ea fugiat impedit ipsum nisi, quaerat, quibusdam ratione repellat similique voluptatem.
+                    Commodi, consequatur, cupiditate deserunt doloremque dolores dolorum eum illum inventore ipsa iusto
+                    mollitia quasi quia quisquam sed unde. Aliquam animi dicta ipsam omnis praesentium rem, sint. Autem
+                    culpa esse sunt ullam! A ad aliquam animi consequatur dignissimos eius, enim et excepturi id ipsam
+                    ipsum labore minus molestias officiis quae quaerat quas quis quo rem, repellat sapiente sed sequi
+                    sit soluta tenetur vel velit voluptatem. Eveniet ipsam maxime non perspiciatis quas quidem sint.
+                    Aliquam beatae dignissimos doloremque error non omnis quia reiciendis rem tenetur vitae!
+                </Container>
             </>
         ),
     },

@@ -1,23 +1,32 @@
+'use client';
+
 import React from 'react';
 
-import { Dialog, DialogContent } from '@/components/shadcn/Dialog';
-import { DialogRootProps } from '@base-ui/react/dialog';
+import { useWindowSize } from 'react-use';
+
+import { Dialog, DialogContent, DialogRootProps } from '@/components/shadcn/Dialog';
 import Container from '@/components/common/Container';
 import Columns from '@/components/common/Columns';
 import List, { SocialMediaProps } from '@/components/common/List';
 import Button, { BaseAnchorProps } from '@/components/common/Button';
 import Heading from '@/components/common/Heading';
 
-// export type MenuItemProps = Pick<any, any>
-
 export type MenuProps = {
     items?: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>[];
     social?: SocialMediaProps['items'];
-} & Pick<DialogRootProps, 'open'>;
+} & Pick<DialogRootProps, 'open' | 'onOpenChange'>;
 
-const Menu = ({ open, social, items }: MenuProps): React.ReactElement => {
+const Menu = ({ open, onOpenChange, social, items }: MenuProps): React.ReactElement => {
+    const { width } = useWindowSize();
+
+    let socialIconSize: SocialMediaProps['size'] = 'sm';
+    if (width > 320 && width < 576) socialIconSize = 'md';
+    if (width > 576) socialIconSize = 'lg';
+
     return (
-        <Dialog open={open}>
+        <Dialog
+            open={open}
+            onOpenChange={onOpenChange}>
             <DialogContent
                 showCloseButton={false}
                 className="modal modal--menu">
@@ -29,9 +38,12 @@ const Menu = ({ open, social, items }: MenuProps): React.ReactElement => {
                 </Heading>
 
                 <Container>
-                    <Columns className="items-center">
+                    <Columns
+                        className="items-center"
+                        gutterY={5}>
                         <Columns.Column
                             offset={2}
+                            xs={10}
                             md={7}>
                             {items && items.length > 0 && (
                                 <List
@@ -58,10 +70,11 @@ const Menu = ({ open, social, items }: MenuProps): React.ReactElement => {
 
                         <Columns.Column
                             offset={2}
+                            xs={10}
                             md={1}>
                             <List.SocialMedia
-                                direction="vertical"
-                                size="lg"
+                                direction={width > 992 ? 'vertical' : 'horizontal'}
+                                size={socialIconSize}
                                 color="light"
                                 items={social}
                             />

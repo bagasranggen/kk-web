@@ -4,9 +4,14 @@
         @apply translate-y-0;
         @apply transition-[background-color,translate];
         @apply duration-[500ms,500ms];
+        @apply z-1040;
 
         &.nav--center:not(.nav--hide) {
             @apply bg-kk-primary;
+        }
+
+        &.nav--center.nav--hide {
+            @apply delay-[500ms,0ms];
         }
 
         &.nav--hide {
@@ -18,7 +23,7 @@
         }
 
         .nav__logo {
-            @apply max-w-22;
+            @apply w-15 md:w-22;
 
             svg path {
                 @apply transition-colors;

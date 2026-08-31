@@ -1,6 +1,20 @@
 import type { Metadata } from 'next';
+import { Bodoni_Moda, DM_Sans } from 'next/font/google';
 
 import '@/assets/styles/css/globals.css';
+
+import Main from '@/components/layout/Main';
+import ContextProvider from '@/store/context';
+
+const dmSans = DM_Sans({
+    variable: '--font-dm-sans',
+    subsets: ['latin'],
+});
+
+const bodoniModa = Bodoni_Moda({
+    variable: '--font-bodoni-moda',
+    subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -9,10 +23,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
     return (
-        <html
-            lang="en"
-            className="antialiased">
-            <body>{children}</body>
-        </html>
+        <ContextProvider>
+            <html
+                lang="en"
+                className={`${dmSans.variable} ${bodoniModa.variable}`}>
+                <body>
+                    <Main>{children}</Main>
+                </body>
+            </html>
+        </ContextProvider>
     );
 }
