@@ -1,0 +1,86 @@
+@layer components {
+    .list.list--schedule {
+        &.list--has-hover {
+            .list__item {
+                @apply transition-[background-size,border-color,color];
+                @apply delay-[0ms,150ms,0ms];
+                @apply bg-linear-(--color-kk-primary);
+                @apply bg-no-repeat;
+                @apply bg-size-[100%_0%];
+                @apply hover:text-light;
+                @apply hover:bg-size-[100%_100%];
+                @apply hover:border-kk-primary;
+
+                &.list__item--previous.list__item--down,
+                &.list__item--current.list__item--up {
+                    @apply bg-bottom;
+                }
+
+                &.list__item--previous.list__item--current.list__item--up {
+                    @apply bg-top;
+                }
+
+                &:hover {
+                    .list__label {
+                        @apply transition-colors;
+                        @apply bg-light;
+                        @apply text-kk-primary;
+                    }
+
+                    + .list__item {
+                        @apply transition-[background-size,color,border-color];
+                        @apply delay-[0ms,0ms,150ms];
+                        /*@apply delay-150;*/
+                        @apply border-t-kk-primary;
+                    }
+                }
+            }
+        }
+
+        li {
+            @apply py-2.5;
+            @apply border-t border-t-dark;
+            @apply last:border-b last:border-b-dark;
+        }
+
+        .list__item {
+            /*&.list__item--previous.list__item--down,*/
+            /*&.list__item--current.list__item--up {*/
+            /*    @apply bg-bottom;*/
+            /*}*/
+
+            /*&.list__item--previous.list__item--current.list__item--up {*/
+            /*    @apply bg-top;*/
+            /*}*/
+        }
+
+        .list__title,
+        .list__label,
+        .list__location {
+            @apply uppercase;
+        }
+
+        .list__title,
+        .list__location {
+            @apply text-[1.8rem] tracking-0.3;
+            @apply font-black;
+        }
+
+        .list__location {
+            @apply flex items-baseline;
+            @apply gap-0.5;
+        }
+
+        .list__label {
+            @apply uppercase;
+            @apply pe-1.5 ps-[1.7rem] py-0.5;
+            @apply bg-kk-accent-dark text-light;
+            @apply text-[1.2rem] font-bold tracking-0.2;
+        }
+
+        .list__heading {
+            @apply text-[3rem] tracking-0.4;
+            @apply font-medium;
+        }
+    }
+}

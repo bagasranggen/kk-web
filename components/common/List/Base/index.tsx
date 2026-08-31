@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 
 import { BaseComponentProps, ElementTagsProps } from '@/libs/@types';
 
@@ -11,7 +11,7 @@ export type BaseUListProps = {
 } & React.HTMLAttributes<HTMLUListElement>;
 
 export type BaseProps = {
-    items?: PropsWithChildren[];
+    items?: React.HTMLAttributes<HTMLLIElement>[];
 } & (BaseComponentProps<HTMLOListElement> & (BaseOListProps | BaseUListProps));
 
 const Base = ({ as: List = 'ul', items, ...props }: BaseProps): React.ReactElement | null => {
@@ -19,10 +19,16 @@ const Base = ({ as: List = 'ul', items, ...props }: BaseProps): React.ReactEleme
 
     return (
         <List {...props}>
-            {items.map((item: NonNullable<BaseProps['items']>[number], i: number) => {
-                if (!item?.children) return null;
+            {items.map(({ children, ...itemProps }: NonNullable<BaseProps['items']>[number], i: number) => {
+                if (!children) return null;
 
-                return <li key={i}>{item.children}</li>;
+                return (
+                    <li
+                        key={i}
+                        {...itemProps}>
+                        {children}
+                    </li>
+                );
             })}
         </List>
     );

@@ -23,6 +23,7 @@ const Base = ({
     if (variant) headingClass.push('heading');
     if (variant === 'section') headingClass.push('heading--section');
     if (variant === 'page') headingClass.push('heading--page');
+    if (family === 'bodoni-moda') headingClass.push('font-bodoni-moda');
     if (className) headingClass.push(className);
     headingClass = joinArrayString(headingClass);
 

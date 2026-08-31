@@ -1,9 +1,45 @@
 import React from 'react';
 
-export type HomepageIndexProps = {};
+import Heading from '@/components/common/Heading';
+import HomepageSchedule, { HomepageScheduleProps } from '@/components/pages/HomepageIndex/HomepageSchedule';
+import Container from '@/components/common/Container';
+import Button from '@/components/common/Button';
 
-const HomepageIndex = ({}: HomepageIndexProps): React.ReactElement => {
-    return <h1>Hello World!</h1>;
+export type HomepageIndexProps = {
+    schedule?: HomepageScheduleProps['items'];
+};
+
+const HomepageIndex = ({ schedule }: HomepageIndexProps): React.ReactElement => {
+    return (
+        <>
+            {schedule && schedule.length > 0 && (
+                <section>
+                    <Container>
+                        <Heading
+                            as="h2"
+                            variant="section">
+                            Schedule
+                        </Heading>
+                    </Container>
+
+                    <HomepageSchedule
+                        className="mt-4"
+                        items={schedule}
+                    />
+
+                    <Container className="mt-6 text-center">
+                        <Button.Block
+                            as="anchor"
+                            href="#"
+                            color="accent"
+                            size="lg">
+                            Check More Schedule
+                        </Button.Block>
+                    </Container>
+                </section>
+            )}
+        </>
+    );
 };
 
 export default HomepageIndex;

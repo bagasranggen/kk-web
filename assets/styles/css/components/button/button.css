@@ -8,6 +8,11 @@
         @apply cursor-pointer;
     }
 
+    a {
+        @apply transition-colors;
+        @apply lg:hover:text-kk-accent-light;
+    }
+
     a,
     button {
         @apply focus-visible:outline-none;
