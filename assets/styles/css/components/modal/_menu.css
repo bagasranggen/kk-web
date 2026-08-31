@@ -1,0 +1,25 @@
+@layer components {
+    .modal.modal--menu {
+        @apply bg-kk-primary text-light;
+        @apply h-screen;
+        @apply flex items-center;
+
+        .modal__list {
+            li {
+                @apply not-first:mt-3;
+
+                a {
+                    @apply block;
+                    @apply lg:transition-[padding-left];
+                    @apply lg:hover:ps-5;
+                }
+            }
+        }
+
+        .modal__title {
+            @apply fixed left-0;
+            @apply leading-7;
+            @apply [writing-mode:vertical-lr];
+        }
+    }
+}

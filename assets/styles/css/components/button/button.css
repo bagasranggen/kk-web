@@ -7,4 +7,9 @@
     .btn {
         @apply cursor-pointer;
     }
+
+    a,
+    button {
+        @apply focus-visible:outline-none;
+    }
 }

@@ -1,5 +1,6 @@
 @import './button/button.css';
 @import './list/list.css';
+@import './modal/modal.css';
 
 @import './_columns.css';
 @import './_container.css';
