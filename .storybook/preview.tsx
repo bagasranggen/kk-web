@@ -1,17 +1,28 @@
 import type { Preview } from '@storybook/nextjs-vite';
-import { DM_Sans } from 'next/font/google';
+import { DM_Sans, Bodoni_Moda } from 'next/font/google';
 
 const dmSans = DM_Sans({
     variable: '--font-dm-sans',
     subsets: ['latin'],
 });
 
+const bodoniModa = Bodoni_Moda({
+    variable: '--font-bodoni-moda',
+    subsets: ['latin'],
+});
+
 const preview: Preview = {
     decorators: [
         (Story) => (
-            <main className={`${dmSans.variable}`}>
+            <>
+                <style>{`
+                    :root { 
+                        --font-dm-sans: "${dmSans.style.fontFamily}"; 
+                        --font-bodoni-moda: "${bodoniModa.style.fontFamily}"; 
+                    }
+                `}</style>
                 <Story />
-            </main>
+            </>
         ),
     ],
     parameters: {
