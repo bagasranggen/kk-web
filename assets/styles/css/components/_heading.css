@@ -1,0 +1,19 @@
+@layer components {
+    .heading {
+        &.heading--section,
+        &.heading--page {
+            @apply font-bodoni-moda;
+            @apply font-medium;
+        }
+
+        &.heading--section {
+            @apply text-[6rem] tracking-[1rem];
+            @apply uppercase;
+        }
+
+        &.heading--page {
+            @apply text-[10rem] tracking-[1.2rem];
+            @apply uppercase;
+        }
+    }
+}
