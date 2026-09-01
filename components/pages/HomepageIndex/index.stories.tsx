@@ -5,6 +5,9 @@ import { fn } from 'storybook/test';
 import HomepageIndex from './index';
 import HomepageSchedule from '@/components/pages/HomepageIndex/HomepageSchedule';
 import { LIST_SCHEDULE } from '@/components/pages/HomepageIndex/index.mock';
+import HomepageDiscography from '@/components/pages/HomepageIndex/HomepageDiscography';
+import HomepageDiscographyItem from '@/components/pages/HomepageIndex/HomepageDiscographyItem';
+import Container from '@/components/common/Container';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -38,5 +41,40 @@ export const Schedule: StoryObj<typeof HomepageSchedule> = {
     },
     render: (args) => {
         return <HomepageSchedule {...args} />;
+    },
+};
+
+export const DiscographyItemLarge: StoryObj<typeof HomepageDiscographyItem> = {
+    args: {
+        size: 'lg',
+    },
+    render: (args) => {
+        return (
+            <Container type="fluid">
+                <HomepageDiscographyItem {...args} />
+            </Container>
+        );
+    },
+};
+
+export const DiscographyItemRegular: StoryObj<typeof HomepageDiscographyItem> = {
+    args: {},
+    render: (args) => {
+        return (
+            <Container type="fluid">
+                <HomepageDiscographyItem {...args} />
+            </Container>
+        );
+    },
+};
+
+export const Discography: StoryObj<typeof HomepageDiscography> = {
+    args: {},
+    render: (args) => {
+        return (
+            <Container type="fluid">
+                <HomepageDiscography {...args} />{' '}
+            </Container>
+        );
     },
 };
