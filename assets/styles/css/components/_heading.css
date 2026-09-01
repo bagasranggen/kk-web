@@ -7,7 +7,9 @@
         }
 
         &.heading--section {
-            @apply text-[6rem] tracking-[1rem];
+            @apply text-[4.5rem] md:text-[6rem];
+            @apply max-md:leading-5.5;
+            @apply tracking-0.5 md:tracking-[1rem];
             @apply uppercase;
         }
 

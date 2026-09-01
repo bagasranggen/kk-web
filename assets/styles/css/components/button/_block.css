@@ -28,7 +28,8 @@
         }
 
         &.btn--lg {
-            @apply text-[2.2rem] tracking-0.5;
+            @apply text-[1.8rem] md:text-[2.2rem];
+            @apply tracking-0.3 md:tracking-0.5;
             @apply ps-2 pb-0.5;
 
             .btn__icon {

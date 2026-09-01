@@ -23,7 +23,7 @@ const HomepageIndex = ({ schedule }: HomepageIndexProps): React.ReactElement => 
                     </Container>
 
                     <HomepageSchedule
-                        className="mt-4"
+                        className="mt-2 md:mt-4"
                         items={schedule}
                     />
 

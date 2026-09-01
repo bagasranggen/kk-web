@@ -55,8 +55,14 @@ const HomepageSchedule = ({ className, items }: HomepageScheduleProps): React.Re
                     className: listItemClass,
                     children: (
                         <Container>
-                            <Columns className="items-center">
-                                <Columns.Column md={3}>
+                            <Columns
+                                className="items-center"
+                                gutterY={1}>
+                                <Columns.Column
+                                    className="list__detail"
+                                    sm={5}
+                                    md={4}
+                                    lg={3}>
                                     <Button
                                         as="anchor"
                                         href="#">
@@ -65,8 +71,8 @@ const HomepageSchedule = ({ className, items }: HomepageScheduleProps): React.Re
                                             className="list__location">
                                             JNM Block{' '}
                                             <SquareArrowOutUpRight
-                                                size={16}
                                                 strokeWidth={3}
+                                                className="w-[1.3rem] h-[1.3rem] md:w-[1.6rem] md:h-[1.6rem]"
                                             />
                                         </Heading>
                                     </Button>
@@ -74,14 +80,19 @@ const HomepageSchedule = ({ className, items }: HomepageScheduleProps): React.Re
                                     <p className="list__title">09.00 WIB</p>
                                 </Columns.Column>
 
-                                <Columns.Column>
-                                    <span className="list__label">Public</span>
+                                <Columns.Column
+                                    sm={7}
+                                    md={8}
+                                    lg={9}>
+                                    <div>
+                                        <span className="list__label">Public</span>
+                                    </div>
                                     <Button
                                         as="anchor"
-                                        href="#">
+                                        href="#"
+                                        className="mt-1 inline-block list__heading">
                                         <Heading
                                             as="h2"
-                                            className="mt-1 list__heading"
                                             family="bodoni-moda">
                                             JNM Block
                                         </Heading>
