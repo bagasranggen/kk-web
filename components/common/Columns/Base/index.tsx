@@ -1,6 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 
-import { ArrayStringProps, BreakpointsProps, CreateArrayWithLengthX, NumericRange } from '@/libs/@types';
+import {
+    ArrayStringProps,
+    BaseComponentProps,
+    BreakpointsProps,
+    CreateArrayWithLengthX,
+    NumericRange,
+} from '@/libs/@types';
 import { joinArrayString } from '@/libs/utils';
 import { createBreakpointClass } from '@/libs/factories';
 
@@ -13,12 +19,12 @@ export type GutterProps = 'gutter' | 'gutterX' | 'gutterY';
 
 export type BaseGutterProps = NumericRange<CreateArrayWithLengthX<0>, 10>;
 
-export type BaseProps = PropsWithChildren<
+export type BaseProps = React.HTMLAttributes<HTMLDivElement> &
     Partial<Record<GutterProps, Partial<Record<BreakpointsProps, BaseGutterProps> | BaseGutterProps>>> &
-        React.HTMLAttributes<HTMLElement>
->;
+    PropsWithChildren &
+    BaseComponentProps<HTMLDivElement>;
 
-const Base = ({ className, gutter, gutterX, gutterY, children, ...props }: BaseProps): React.ReactElement => {
+const Base = ({ ref, className, gutter, gutterX, gutterY, children, ...props }: BaseProps): React.ReactElement => {
     const guttersArr = Object.entries({ gutter, gutterX, gutterY });
 
     let rowClass: ArrayStringProps = ['row'];
@@ -66,6 +72,7 @@ const Base = ({ className, gutter, gutterX, gutterY, children, ...props }: BaseP
 
     return (
         <div
+            ref={ref}
             className={rowClass}
             {...props}>
             {children}
