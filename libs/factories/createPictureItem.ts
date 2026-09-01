@@ -23,6 +23,8 @@ export const createPictureItem = ({
 
     if (!nextImage && item) data = Object.assign(data ?? {}, item);
 
+    if (!nextImage && sizesProps) data = Object.assign(data ?? {}, { sizes: sizesProps });
+
     if (nextImage && item && item?.src && item?.width && item?.height) {
         const {
             props: { src, srcSet, width, height, alt, sizes, loading },

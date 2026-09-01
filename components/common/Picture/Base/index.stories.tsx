@@ -73,7 +73,7 @@ export const HalfOnDesktop: Story = {
                 sizes: '(max-width: 767.98px) 50vw, 100vw',
             }),
         ],
-        className: 'md:max-w-[50vw]',
+        className: 'block md:max-w-[50vw]',
     },
 };
 
@@ -90,7 +90,7 @@ export const DifferentRatioOnDesktop: Story = {
                 sizes: '100vw',
             }),
         ],
-        className: 'md:max-w-[50vw]',
+        className: 'block md:max-w-[50vw]',
     },
 };
 
@@ -109,6 +109,6 @@ export const DifferentRatioOnDesktopRegular: Story = {
                 nextImage: false,
             }),
         ],
-        className: 'md:max-w-[50vw]',
+        className: 'block md:max-w-[50vw]',
     },
 };
