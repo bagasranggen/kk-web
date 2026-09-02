@@ -1,0 +1,50 @@
+@layer components {
+    .banner.banner--image-text {
+        @apply relative;
+
+        .banner__media {
+            @apply lg:max-w-[80.417vw];
+        }
+
+        .banner__content {
+            @apply bg-light/70;
+            @apply backdrop-blur-sm;
+            @apply p-2;
+            @apply lg:max-w-[41.181vw];
+        }
+
+        .banner__heading {
+            @apply text-[3rem] leading-3 md:text-[4rem] md:leading-4;
+        }
+
+        .banner__sub-heading {
+            @apply block;
+            @apply uppercase;
+            @apply font-black;
+            @apply text-[1.2rem] md:text-[1.4rem] leading-1.5 md:leading-[1.7rem] tracking-0.1 md:tracking-0.2;
+        }
+
+        .banner__description {
+            @apply font-light;
+        }
+
+        &:not(.banner--no-image) {
+            @apply pb-[var(--banner-content-height,0)] md:pb-[calc(var(--banner-content-height,0)/1.5)] lg:pb-8;
+
+            .banner__content {
+                @apply absolute;
+                @apply bottom-0 right-0;
+            }
+        }
+
+        &.banner--no-image {
+            .banner__content {
+                @apply lg:ms-auto;
+            }
+        }
+
+        &.banner--longer-content {
+            @apply lg:pb-[calc(calc(var(--banner-content-difference-height,0)+4rem+6rem))];
+        }
+    }
+}
