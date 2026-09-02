@@ -6,13 +6,9 @@
         }
 
         .discography__date {
+            @apply block;
             @apply font-black;
-            /*@apply text-[1.4rem] tracking-0.2;*/
         }
-
-        /*.discography__title {*/
-        /*    @apply text-[4rem] tracking-0.4;*/
-        /*}*/
 
         .discography__list {
             @apply list-[decimal-leading-zero];
