@@ -6,7 +6,7 @@ import { ImageTextProps } from '@/components/common/Banner';
 
 export const IMAGE_TEXT_MEDIA: ImageTextProps['media'] = [
     createPictureItem({
-        item: createPicsumImage({ width: 2000, height: 1332 }),
+        item: createPicsumImage({ width: 2000, height: 1100 }),
         sizes: '(max-width: 991.98px) 81.417vw, 100vw',
     }),
 ];

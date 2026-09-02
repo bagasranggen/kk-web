@@ -3,18 +3,19 @@
         @apply relative;
 
         .banner__media {
-            @apply lg:max-w-[80.417vw];
+            @apply lg:w-[80.417vw];
         }
 
         .banner__content {
             @apply bg-light/70;
             @apply backdrop-blur-sm;
             @apply p-2;
-            @apply lg:max-w-[41.181vw];
+            @apply w-full lg:w-[41.181vw];
         }
 
         .banner__heading {
-            @apply text-[3rem] leading-3 md:text-[4rem] md:leading-4;
+            @apply uppercase;
+            @apply text-[3rem] leading-3 md:text-[4rem] md:leading-4 tracking-0.1 md:tracking-0.3;
         }
 
         .banner__sub-heading {
