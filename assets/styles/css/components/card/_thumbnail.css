@@ -6,6 +6,7 @@
         }
 
         .card__price {
+            @apply mb-0;
             @apply font-black;
             @apply text-[1rem] tracking-0.1;
         }

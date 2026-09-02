@@ -24,6 +24,10 @@
                     @apply transition-colors;
                 }
 
+                .list__title {
+                    @apply mb-0;
+                }
+
                 &:hover {
                     .list__title,
                     a:not(:hover) {

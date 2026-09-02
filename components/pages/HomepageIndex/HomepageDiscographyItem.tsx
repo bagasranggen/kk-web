@@ -36,7 +36,7 @@ const HomepageDiscographyItem = ({ size = 'md' }: HomepageDiscographyItemProps):
                     lg: isLarge ? 1 : undefined,
                 }}
                 className="pt-2">
-                <p className="discography__date">2026.7.4</p>
+                <small className="discography__date">2026.7.4</small>
 
                 <Heading
                     as="h3"
