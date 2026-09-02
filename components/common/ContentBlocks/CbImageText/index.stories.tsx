@@ -31,6 +31,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
     args: {
+        isNested: false,
         mediaMain: CB_IMAGE_TEXT_MEDIA_MAIN,
         mediaSecondary: CB_IMAGE_TEXT_MEDIA_SECONDARY,
         children: CB_IMAGE_TEXT_CHILDREN,

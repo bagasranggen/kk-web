@@ -4,16 +4,18 @@ import React, { PropsWithChildren, Ref } from 'react';
 
 import { useMeasure } from 'react-use';
 
-import Container from '@/components/common/Container';
 import Columns from '@/components/common/Columns';
 import Picture, { BaseProps } from '@/components/common/Picture';
+import CbContainer, { CbContainerProps } from '@/components/common/ContentBlocks/CbContainer';
+import CbText, { CbTextProps } from '@/components/common/ContentBlocks/CbText';
 
 export type CbImageTextProps = {
     mediaMain?: BaseProps['items'];
     mediaSecondary?: BaseProps['items'];
-} & PropsWithChildren;
+    children?: CbTextProps['children'];
+} & Pick<CbContainerProps, 'isNested'>;
 
-const CbImageText = ({ mediaMain, mediaSecondary, children }: CbImageTextProps): React.ReactElement => {
+const CbImageText = ({ isNested, mediaMain, mediaSecondary, children }: CbImageTextProps): React.ReactElement => {
     const [contentWrapperRef, { height: contentWrapperHeight }] = useMeasure();
     const [contentRef, { height: contentHeight }] = useMeasure();
     const [mediaRef, { height: mediaHeight }] = useMeasure();
@@ -26,7 +28,10 @@ const CbImageText = ({ mediaMain, mediaSecondary, children }: CbImageTextProps):
     }
 
     return (
-        <Container>
+        <CbContainer
+            hasContainer
+            isNested={isNested}
+            className="cb cb--text-image">
             <Columns
                 className="relative max-lg:items-end lg:pb-(--image-text-content-height-difference,0)"
                 gutterX={{
@@ -51,7 +56,13 @@ const CbImageText = ({ mediaMain, mediaSecondary, children }: CbImageTextProps):
                     md={10}
                     lg={5}
                     offset={{ md: 1 }}>
-                    {children && <div ref={contentRef as Ref<HTMLDivElement>}>{children}</div>}
+                    {children && (
+                        <CbText
+                            ref={contentRef as Ref<HTMLDivElement>}
+                            isNested>
+                            {children}
+                        </CbText>
+                    )}
                 </Columns.Column>
 
                 {mediaSecondary && mediaSecondary.length > 0 && (
@@ -64,7 +75,7 @@ const CbImageText = ({ mediaMain, mediaSecondary, children }: CbImageTextProps):
                     </Columns.Column>
                 )}
             </Columns>
-        </Container>
+        </CbContainer>
     );
 };
 
