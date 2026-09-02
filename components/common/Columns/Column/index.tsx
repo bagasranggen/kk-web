@@ -1,6 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 
-import { ArrayStringProps, BreakpointsProps, CreateArrayWithLengthX, NumericRange } from '@/libs/@types';
+import {
+    ArrayStringProps,
+    BaseComponentProps,
+    BreakpointsProps,
+    CreateArrayWithLengthX,
+    NumericRange,
+} from '@/libs/@types';
 import { joinArrayString } from '@/libs/utils';
 import { createBreakpointClass } from '@/libs/factories';
 
@@ -11,9 +17,13 @@ export type ColumnItemProps = NumericRange<CreateArrayWithLengthX<1>, 12> | 'aut
 
 export type ColumnProps = {
     offset?: Partial<Record<BreakpointsProps, ColumnOffsetProps>> | ColumnOffsetProps;
-} & (Partial<Record<BreakpointsProps, ColumnItemProps>> & React.HTMLAttributes<HTMLElement> & PropsWithChildren);
+} & (Partial<Record<BreakpointsProps, ColumnItemProps>> &
+    React.HTMLAttributes<HTMLElement> &
+    PropsWithChildren &
+    BaseComponentProps<HTMLDivElement>);
 
 const Column = ({
+    ref,
     className,
     children,
     offset,
@@ -87,6 +97,7 @@ const Column = ({
 
     return (
         <div
+            ref={ref}
             {...(columnClass ? { className: columnClass } : {})}
             {...props}>
             {children}
