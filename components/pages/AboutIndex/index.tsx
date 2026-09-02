@@ -11,6 +11,7 @@ import CbText from '@/components/common/ContentBlocks/CbText';
 import CbColumns from '@/components/common/ContentBlocks/CbColumns';
 import Picture from '@/components/common/Picture';
 import { createPicsumImage, createPictureItem } from '@/libs/factories';
+import CbColumnSticky from '@/components/common/ContentBlocks/CbColumnSticky';
 
 export type AboutIndexProps = {
     entries: {
@@ -239,6 +240,10 @@ const AboutIndex = ({ entries }: AboutIndexProps): React.ReactElement => {
                         </Columns.Column>
                     </Columns>
                 </Container>
+            </section>
+
+            <section className="mt-15 mb-15">
+                <CbColumnSticky />
             </section>
         </>
     );
