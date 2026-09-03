@@ -12,3 +12,7 @@ export const CARD_THUMBNAIL_4_ITEMS: ThumbnailProps['items'] = createArrayFromNu
 export const CARD_THUMBNAIL_8_ITEMS: ThumbnailProps['items'] = createArrayFromNumber(8).map((_) => {
     return {};
 });
+
+export const CARD_THUMBNAIL_9_ITEMS: ThumbnailProps['items'] = createArrayFromNumber(9).map((_) => {
+    return {};
+});

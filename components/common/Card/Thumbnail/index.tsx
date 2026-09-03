@@ -8,9 +8,11 @@ import { createPicsumImage } from '@/libs/factories';
 import Columns, { BaseProps, ColumnProps } from '@/components/common/Columns';
 import Picture from '@/components/common/Picture';
 import Button from '@/components/common/Button';
+import DynamicWrapper from '@/components/common/DynamicWrapper';
 
 export type ThumbnailProps = {
     items?: {}[];
+    variant?: 'grid' | 'space';
     columns?: Pick<BaseProps, 'gutterX' | 'gutterY'>;
     column?: Pick<ColumnProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl'>;
     extra?: ClassnameProps & PropsWithChildren & Pick<ThumbnailProps, 'column'>;
@@ -20,11 +22,14 @@ const Thumbnail = ({
     ref,
     className,
     items,
+    variant = 'space',
     columns = { gutterX: { md: 1 }, gutterY: { md: 2 } },
     column = { md: 3 },
     extra,
 }: ThumbnailProps): React.ReactElement | null => {
     let cardClass: ArrayStringProps = ['card card--thumbnail'];
+    if (variant === 'grid') cardClass.push('card--grid');
+    if (variant === 'space') cardClass.push('card--space');
     if (className) cardClass.push(className);
     cardClass = joinArrayString(cardClass);
 
@@ -39,16 +44,21 @@ const Thumbnail = ({
                 return (
                     <Columns.Column
                         key={i}
-                        {...column}>
+                        {...column}
+                        className="card__item">
                         <Button
                             as="anchor"
                             href="#">
-                            <Picture items={[createPicsumImage({ width: 800, height: 1151 })]} />
+                            <DynamicWrapper
+                                as={variant === 'grid' ? 'div' : undefined}
+                                className="card__wrapper">
+                                <Picture items={[createPicsumImage({ width: 800, height: 1151 })]} />
 
-                            <div className="mt-1">
-                                <p className="card__price">IDR 200,000</p>
-                                <p className="card__title">Korekayu Logo</p>
-                            </div>
+                                <div className="mt-1">
+                                    <p className="card__price">IDR 200,000</p>
+                                    <p className="card__title">Korekayu Logo</p>
+                                </div>
+                            </DynamicWrapper>
                         </Button>
                     </Columns.Column>
                 );

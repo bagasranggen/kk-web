@@ -15,5 +15,24 @@
             @apply font-semibold;
             @apply text-[1.4rem] tracking-0.2;
         }
+
+        &.card--grid {
+            .card__wrapper {
+                @apply p-2;
+            }
+
+            .card__item {
+                @apply border-dark;
+                @apply border-b;
+
+                &:not(:nth-child(3n)) {
+                    @apply lg:border-r;
+                }
+
+                &:not(:nth-child(2n)) {
+                    @apply md:max-lg:border-r;
+                }
+            }
+        }
     }
 }

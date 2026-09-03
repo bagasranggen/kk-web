@@ -7,6 +7,7 @@ import {
     CARD_THUMBNAIL_3_ITEMS,
     CARD_THUMBNAIL_4_ITEMS,
     CARD_THUMBNAIL_8_ITEMS,
+    CARD_THUMBNAIL_9_ITEMS,
 } from '@/components/common/Card/Thumbnail/index.mock';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
@@ -49,6 +50,15 @@ export const Default: Story = {
 export const Default2Rows: Story = {
     args: {
         items: CARD_THUMBNAIL_8_ITEMS,
+    },
+};
+
+export const Grid: Story = {
+    args: {
+        variant: 'grid',
+        columns: { gutterY: 0, gutterX: 0 },
+        column: { md: 6, lg: 4 },
+        items: CARD_THUMBNAIL_9_ITEMS,
     },
 };
 
