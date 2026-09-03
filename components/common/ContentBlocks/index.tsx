@@ -7,11 +7,12 @@ import { CB_COMPONENT_HANDLES } from '@/components/common/ContentBlocks/handlesI
 import { CbColumnsProps } from '@/components/common/ContentBlocks/CbColumns';
 import { CbColumnStickyProps } from '@/components/common/ContentBlocks/CbColumnSticky';
 import { CbImageProps } from '@/components/common/ContentBlocks/CbImage';
+import { CbImageShrunkProps } from '@/components/common/ContentBlocks/CbImageShrunk';
 import { CbImageTextProps } from '@/components/common/ContentBlocks/CbImageText';
 import { CbTextProps } from '@/components/common/ContentBlocks/CbText';
 
 export type ContentBlocksItemProps =
-    CbColumnsProps | CbColumnStickyProps | CbImageProps | CbImageTextProps | CbTextProps;
+    CbColumnsProps | CbColumnStickyProps | CbImageProps | CbImageShrunkProps | CbImageTextProps | CbTextProps;
 
 export type ContentBlocksProps = {
     items?: ContentBlocksItemProps[];
