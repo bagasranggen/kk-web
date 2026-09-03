@@ -1,0 +1,15 @@
+@layer components {
+    .list.list--product-listing {
+        @apply flex flex-wrap justify-center gap-x-3;
+
+        li {
+            @apply uppercase;
+            @apply text-[1.4rem] tracking-0.2;
+            @apply font-bold;
+
+            &:not(.active) {
+                @apply text-dark/40;
+            }
+        }
+    }
+}

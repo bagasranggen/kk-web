@@ -14,7 +14,7 @@
         }
 
         &.heading--page {
-            @apply text-[10rem] tracking-[3rem];
+            @apply text-[10rem] tracking-[2rem];
             @apply uppercase;
         }
     }
