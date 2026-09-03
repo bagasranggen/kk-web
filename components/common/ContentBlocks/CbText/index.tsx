@@ -1,13 +1,17 @@
 import React, { PropsWithChildren } from 'react';
 
-import { ArrayStringProps } from '@/libs/@types';
+import { ArrayStringProps, ContentBlocksComponentProps } from '@/libs/@types';
 import { joinArrayString } from '@/libs/utils';
 
+import { CB_HANDLES } from '@/components/common/ContentBlocks/handles';
 import CbContainer, { CbContainerProps } from '@/components/common/ContentBlocks/CbContainer';
 
-export type CbTextProps = {
-    align?: 'left' | 'center' | 'right';
-} & (Pick<CbContainerProps, 'isNested' | 'ref' | 'className'> & PropsWithChildren);
+export type CbTextProps = ContentBlocksComponentProps<
+    typeof CB_HANDLES.TEXT,
+    {
+        align?: 'left' | 'center' | 'right';
+    } & (Pick<CbContainerProps, 'ref'> & PropsWithChildren)
+>;
 
 const CbText = ({ ref, isNested, className, align, children }: CbTextProps): React.ReactElement | null => {
     let textClass: ArrayStringProps = ['cb cb--text'];

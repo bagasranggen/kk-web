@@ -1,5 +1,10 @@
 import React from 'react';
-import CbContainer, { CbContainerProps } from '@/components/common/ContentBlocks/CbContainer';
+
+import { ContentBlocksComponentProps } from '@/libs/@types';
+
+import { CB_HANDLES } from '@/components/common/ContentBlocks/handles';
+import CbContainer from '@/components/common/ContentBlocks/CbContainer';
+import ContentBlocks, { ContentBlocksProps } from '@/components/common/ContentBlocks';
 import Columns, { ColumnProps } from '@/components/common/Columns';
 
 const COLUMNS_VARIANT_HANDLES = {
@@ -19,14 +24,17 @@ const COLUMNS_COLUMN_HANDLE: Partial<
     [COLUMNS_VARIANT_HANDLES.VARIANT_3_2]: [{ lg: 6 }, { lg: 5 }],
 };
 
-export type CbColumnProps = {
-    items?: { children: React.ReactNode }[];
-    // variant?: 'slim' | '2/3' | '3/2';
-    variant?: (typeof COLUMNS_VARIANT_HANDLES)[keyof typeof COLUMNS_VARIANT_HANDLES];
-} & Pick<CbContainerProps, 'isNested'>;
-// (typeof ANIMATION_VARIANTS)[keyof typeof ANIMATION_VARIANTS],
+export type CbColumnsItemProps = { typeHandle: 'column'; items?: ContentBlocksProps['items'] };
 
-const CbColumn = ({ items, variant, isNested }: CbColumnProps): React.ReactElement | null => {
+export type CbColumnsProps = ContentBlocksComponentProps<
+    typeof CB_HANDLES.COLUMNS,
+    {
+        items?: CbColumnsItemProps[];
+        variant?: (typeof COLUMNS_VARIANT_HANDLES)[keyof typeof COLUMNS_VARIANT_HANDLES];
+    }
+>;
+
+const CbColumns = ({ items, variant, isNested, className }: CbColumnsProps): React.ReactElement | null => {
     if (!items || items.length === 0) return null;
 
     let columnJustifyClass = undefined;
@@ -37,24 +45,25 @@ const CbColumn = ({ items, variant, isNested }: CbColumnProps): React.ReactEleme
         <CbContainer
             hasContainer
             isNested={isNested}
-            className="cb cb--columns">
+            className="cb cb--columns"
+            spacing={className}>
             <Columns
                 className={columnJustifyClass}
                 gutterY={3}>
                 {items.map((item, i) => {
-                    if (!item?.children) return null;
-
                     let columnProps = {};
-                    if (variant && COLUMNS_COLUMN_HANDLE?.[variant]?.[i])
+                    if (variant && COLUMNS_COLUMN_HANDLE?.[variant]?.[i]) {
                         columnProps = COLUMNS_COLUMN_HANDLE[variant][i];
+                    }
 
                     return (
                         <Columns.Column
                             key={i}
-                            {...columnProps}
-                            // md={9}
-                        >
-                            {item.children}
+                            {...columnProps}>
+                            <ContentBlocks
+                                isNested
+                                items={item?.items ?? []}
+                            />
                         </Columns.Column>
                     );
                 })}
@@ -63,4 +72,4 @@ const CbColumn = ({ items, variant, isNested }: CbColumnProps): React.ReactEleme
     );
 };
 
-export default CbColumn;
+export default CbColumns;

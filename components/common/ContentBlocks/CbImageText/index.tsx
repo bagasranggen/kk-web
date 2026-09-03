@@ -1,21 +1,33 @@
 'use client';
 
-import React, { PropsWithChildren, Ref } from 'react';
+import React, { Ref } from 'react';
+
+import { ContentBlocksComponentProps } from '@/libs/@types';
 
 import { useMeasure } from 'react-use';
 
+import { CB_HANDLES } from '@/components/common/ContentBlocks/handles';
+import CbContainer from '@/components/common/ContentBlocks/CbContainer';
+import CbText, { CbTextProps } from '@/components/common/ContentBlocks/CbText';
 import Columns from '@/components/common/Columns';
 import Picture, { BaseProps } from '@/components/common/Picture';
-import CbContainer, { CbContainerProps } from '@/components/common/ContentBlocks/CbContainer';
-import CbText, { CbTextProps } from '@/components/common/ContentBlocks/CbText';
 
-export type CbImageTextProps = {
-    mediaMain?: BaseProps['items'];
-    mediaSecondary?: BaseProps['items'];
-    children?: CbTextProps['children'];
-} & Pick<CbContainerProps, 'isNested'>;
+export type CbImageTextProps = ContentBlocksComponentProps<
+    typeof CB_HANDLES.IMAGE_TEXT,
+    {
+        mediaMain?: BaseProps['items'];
+        mediaSecondary?: BaseProps['items'];
+        children?: CbTextProps['children'];
+    }
+>;
 
-const CbImageText = ({ isNested, mediaMain, mediaSecondary, children }: CbImageTextProps): React.ReactElement => {
+const CbImageText = ({
+    isNested,
+    className,
+    mediaMain,
+    mediaSecondary,
+    children,
+}: CbImageTextProps): React.ReactElement => {
     const [contentWrapperRef, { height: contentWrapperHeight }] = useMeasure();
     const [contentRef, { height: contentHeight }] = useMeasure();
     const [mediaRef, { height: mediaHeight }] = useMeasure();
@@ -31,7 +43,8 @@ const CbImageText = ({ isNested, mediaMain, mediaSecondary, children }: CbImageT
         <CbContainer
             hasContainer
             isNested={isNested}
-            className="cb cb--text-image">
+            className="cb cb--text-image"
+            spacing={className}>
             <Columns
                 className="relative max-lg:items-end lg:pb-(--image-text-content-height-difference,0)"
                 gutterX={{

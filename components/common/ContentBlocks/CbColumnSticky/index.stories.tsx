@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
 
 import CbColumnSticky from './index';
+import { CB_COLUMN_STICKY_MEDIA } from '@/components/common/ContentBlocks/CbColumnSticky/index.mock';
+import { CB_TEXT_CHILDREN } from '@/components/common/ContentBlocks/CbText/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -25,5 +27,8 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-    args: {},
+    args: {
+        media: CB_COLUMN_STICKY_MEDIA,
+        children: CB_TEXT_CHILDREN,
+    },
 };
