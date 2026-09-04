@@ -1,0 +1,29 @@
+@layer components {
+    .banner.banner--product {
+        @apply justify-between;
+
+        .banner__label-heading {
+            @apply flex justify-between items-center;
+        }
+
+        .banner__label-title {
+            @apply mb-0;
+            @apply uppercase;
+
+            &:not(.banner__label-title--sub) {
+                @apply text-[1.4rem] tracking-0.2;
+                @apply font-black;
+            }
+
+            &.banner__label-title--sub {
+                @apply text-[1rem] tracking-[0.15rem];
+                @apply font-light;
+            }
+        }
+
+        .banner__price {
+            @apply text-[4rem] tracking-0.2;
+            @apply font-light;
+        }
+    }
+}
