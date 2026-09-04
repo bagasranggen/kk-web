@@ -1,0 +1,94 @@
+import React, { HTMLInputTypeAttribute, RefObject } from 'react';
+
+import {
+    BaseComponentProps,
+    BaseHookOptionProps,
+    BaseInputHookProps as BaseInputCommonHookProps,
+    BaseRegularInputProps,
+    InputRegularRef,
+    InputSelectRef,
+    InputTextareaRef,
+} from '@/libs/@types';
+
+import InputText from '@/components/common/Input/shared/InputText';
+import InputRadio from '@/components/common/Input/shared/InputRadio';
+import InputCheckbox from '@/components/common/Input/shared/InputCheckbox';
+import InputSelect, { BaseInputSelectProps, InputSelectItemProps } from '@/components/common/Input/shared/InputSelect';
+import InputTextarea, { BaseInputTextareaProps } from '@/components/common/Input/shared/InputTextarea';
+import BaseError from '@/components/common/Input/Base/BaseError';
+
+export type BaseInputRef = InputRegularRef | InputSelectRef | InputTextareaRef;
+
+export type BaseInputHookProps = {
+    hook?: BaseInputCommonHookProps & BaseHookOptionProps;
+};
+
+export type BaseInputProps = BaseInputHookProps & {
+    type: React.InputHTMLAttributes<HTMLInputElement>['type'] | 'select' | 'textarea';
+} & (BaseRegularInputProps & BaseInputSelectProps & BaseInputTextareaProps);
+
+export type BaseProps = {
+    error?: React.ReactNode;
+} & BaseInputProps &
+    BaseComponentProps<BaseInputRef>;
+
+const Base = ({ ref, error, ...props }: BaseProps) => {
+    let input = (
+        <InputText
+            ref={ref as RefObject<InputRegularRef>}
+            {...props}
+        />
+    );
+
+    if (props.type === 'radio') {
+        input = (
+            <InputRadio
+                ref={ref as RefObject<InputRegularRef>}
+                {...props}
+            />
+        );
+    }
+
+    if (props.type === 'checkbox') {
+        input = (
+            <InputCheckbox
+                ref={ref as RefObject<InputRegularRef>}
+                {...props}
+            />
+        );
+    }
+
+    if (props?.type === 'select') {
+        const { type, ...restProps } = props;
+
+        input = (
+            <InputSelect
+                ref={ref as RefObject<InputSelectRef>}
+                {...restProps}
+            />
+        );
+    }
+
+    if (props?.type === 'textarea') {
+        const { type, ...restProps } = props;
+
+        input = (
+            <InputTextarea
+                ref={ref as RefObject<InputTextareaRef>}
+                {...restProps}
+            />
+        );
+    }
+
+    return (
+        <>
+            {input}
+            <BaseError>{error}</BaseError>
+        </>
+    );
+};
+
+export default Base;
+
+export { BaseError };
+export type { BaseInputSelectProps, InputSelectItemProps };
