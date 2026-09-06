@@ -4,6 +4,11 @@ import { fn } from 'storybook/test';
 
 import ProductIndex from './index';
 import { CARD_THUMBNAIL_4_ITEMS } from '@/components/common/Card/Thumbnail/index.mock';
+import {
+    PRODUCT_COLORS_ITEMS,
+    PRODUCT_DESCRIPTION,
+    PRODUCT_SIZES_ITEMS,
+} from '@/components/common/Banner/Product/index.mockup';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -28,6 +33,18 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         entries: {
+            banner: {
+                title: 'Korekayu Logo',
+                description: PRODUCT_DESCRIPTION,
+                colors: PRODUCT_COLORS_ITEMS,
+                sizes: PRODUCT_SIZES_ITEMS,
+                price: 200000,
+                priceLabel: 'IDR 200,000',
+                onSubmit: (data) => {
+                    console.log('submit');
+                    console.log(data);
+                },
+            },
             otherProducts: CARD_THUMBNAIL_4_ITEMS,
         },
     },

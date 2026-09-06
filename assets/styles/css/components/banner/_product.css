@@ -25,5 +25,48 @@
             @apply text-[4rem] tracking-0.2;
             @apply font-light;
         }
+
+        .banner__list {
+            @apply flex flex-wrap gap-x-1 gap-y-1;
+
+            input[type='radio'] + label {
+                @apply cursor-pointer;
+                @apply transition-opacity;
+                @apply border border-dark;
+                @apply min-w-3 h-3;
+            }
+
+            &.banner__list--color {
+                input[type='radio'] + label {
+                    @apply transition-opacity;
+                    @apply opacity-60;
+                    @apply peer-checked:opacity-100;
+                    @apply block;
+                    @apply bg-(--input-bg);
+                }
+            }
+
+            &.banner__list--size {
+                input[type='radio'] + label {
+                    @apply transition-colors;
+                    @apply flex items-center justify-center;
+                    @apply px-0.5;
+                    @apply text-[1.4rem] font-medium tracking-0.1;
+                    @apply uppercase;
+                    @apply peer-checked:bg-dark;
+                    @apply peer-checked:text-light;
+                }
+
+                li:hover {
+                    input[type='radio']:not(:checked) + label {
+                        @apply lg:bg-dark/60;
+                        @apply lg:text-light;
+                    }
+                }
+            }
+        }
+
+        .banner__form {
+        }
     }
 }

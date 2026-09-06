@@ -5,7 +5,7 @@
 
 @layer components {
     .btn {
-        @apply cursor-pointer;
+        @apply not-disabled:cursor-pointer;
     }
 
     a {

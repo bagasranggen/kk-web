@@ -3,13 +3,14 @@ import React from 'react';
 import { BaseIndexPageProps } from '@/libs/@types';
 
 import Card, { ThumbnailProps } from '@/components/common/Card';
-import { CARD_THUMBNAIL_4_ITEMS } from '@/components/common/Card/Thumbnail/index.mock';
 import Container from '@/components/common/Container';
 import Heading from '@/components/common/Heading';
+import Banner, { ProductProps } from '@/components/common/Banner';
 
 export type ProductIndexProps = BaseIndexPageProps<
     'product',
     {
+        banner?: Pick<ProductProps, 'title' | 'description' | 'colors' | 'sizes' | 'price' | 'priceLabel' | 'onSubmit'>;
         otherProducts?: ThumbnailProps['items'];
     }
 >;
@@ -17,6 +18,12 @@ export type ProductIndexProps = BaseIndexPageProps<
 const ProductIndex = ({ entries }: ProductIndexProps): React.ReactElement => {
     return (
         <>
+            {entries?.banner && (
+                <Container>
+                    <Banner.Product {...entries?.banner} />
+                </Container>
+            )}
+
             {entries?.otherProducts && entries.otherProducts.length > 0 && (
                 <Container
                     as="section"

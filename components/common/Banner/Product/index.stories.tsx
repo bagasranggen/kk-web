@@ -5,6 +5,11 @@ import { fn } from 'storybook/test';
 import Product from './index';
 import Container from '@/components/common/Container';
 import ProductLabel from '@/components/common/Banner/Product/ProductLabel';
+import {
+    PRODUCT_COLORS_ITEMS,
+    PRODUCT_DESCRIPTION,
+    PRODUCT_SIZES_ITEMS,
+} from '@/components/common/Banner/Product/index.mockup';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -35,10 +40,15 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
     args: {
-        sizes: {
-            onClick: () => {
-                console.log('click size guide');
-            },
+        title: 'Korekayu Logo',
+        description: PRODUCT_DESCRIPTION,
+        colors: PRODUCT_COLORS_ITEMS,
+        sizes: PRODUCT_SIZES_ITEMS,
+        price: 200000,
+        priceLabel: 'IDR 200,000',
+        onSubmit: (data) => {
+            console.log('submit');
+            console.log(data);
         },
     },
 };
