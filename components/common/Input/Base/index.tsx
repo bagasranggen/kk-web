@@ -24,13 +24,17 @@ export type BaseInputHookProps = {
 };
 
 export type BaseInputProps = BaseInputHookProps & {
-    type: React.InputHTMLAttributes<HTMLInputElement>['type'] | 'select' | 'textarea';
+    type:
+        | React.InputHTMLAttributes<HTMLInputElement>['type']
+        | 'custom-radio'
+        | 'custom-checkbox'
+        | 'select'
+        | 'textarea';
 } & (BaseRegularInputProps & BaseInputSelectProps & BaseInputTextareaProps);
 
 export type BaseProps = {
     error?: React.ReactNode;
-} & BaseInputProps &
-    BaseComponentProps<BaseInputRef>;
+} & (BaseInputProps & BaseComponentProps<BaseInputRef>);
 
 const Base = ({ ref, error, ...props }: BaseProps) => {
     let input = (
@@ -40,7 +44,7 @@ const Base = ({ ref, error, ...props }: BaseProps) => {
         />
     );
 
-    if (props.type === 'radio') {
+    if (props.type === 'custom-radio') {
         input = (
             <InputRadio
                 ref={ref as RefObject<InputRegularRef>}
@@ -49,7 +53,7 @@ const Base = ({ ref, error, ...props }: BaseProps) => {
         );
     }
 
-    if (props.type === 'checkbox') {
+    if (props.type === 'custom-checkbox') {
         input = (
             <InputCheckbox
                 ref={ref as RefObject<InputRegularRef>}
