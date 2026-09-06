@@ -31,3 +31,11 @@ export const Default: Story = {
         placeholder: 'placeholder',
     },
 };
+
+export const Checkbox: Story = {
+    args: {
+        type: 'checkbox',
+        placeholder: 'placeholder',
+        checked: true,
+    },
+};
