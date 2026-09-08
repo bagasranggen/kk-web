@@ -48,7 +48,7 @@ const Cart = ({ items }: CartProps): React.ReactElement | null => {
                             )}
 
                             <div className="cart__price-wrapper">
-                                <div className="flex items-center">
+                                <div className="cart__quantity">
                                     <Quantity
                                         decrement={{ disabled: !!(item?.qty && item.qty === 1) }}
                                         input={{
