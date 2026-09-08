@@ -4,6 +4,7 @@
 @import './list/list.css';
 @import './modal/modal.css';
 
+@import './_cart.css';
 @import './_columns.css';
 @import './_container.css';
 @import './_discography.css';

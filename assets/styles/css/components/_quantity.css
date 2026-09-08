@@ -17,11 +17,15 @@
             @apply first:border-t first:border-b first:border-l;
             @apply last:border-t last:border-b last:border-r;
             @apply md:transition-colors;
+            @apply md:hover:bg-kk-accent-dark;
+            @apply md:hover:text-light;
+            @apply md:hover:border-kk-accent-dark;
             @apply disabled:pointer-events-none;
             @apply disabled:text-dark/30;
         }
 
         .quantity__text {
+            @apply pointer-events-none;
             @apply text-center;
             @apply border-b;
             @apply border-t;
