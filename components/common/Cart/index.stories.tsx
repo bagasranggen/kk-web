@@ -15,9 +15,20 @@ const meta = {
     },
     decorators: [
         (Story) => (
-            <div style={{ width: '500px' }}>
-                <Story />
-            </div>
+            <>
+                <style>
+                    {`
+                        @media (min-width: 992px) {
+                            .container-storybook {
+                                width: 500px;
+                            }
+                        }
+                    `}
+                </style>
+                <div className="container-storybook">
+                    <Story />
+                </div>
+            </>
         ),
     ],
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
