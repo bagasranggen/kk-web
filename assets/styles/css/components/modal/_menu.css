@@ -1,9 +1,14 @@
 @layer components {
     .modal.modal--menu {
         @apply bg-kk-primary text-light;
-        @apply h-screen max-h-screen overflow-y-auto;
+        @apply h-screen;
         @apply flex items-center;
         @apply py-header;
+
+        .modal__menu {
+            @apply overflow-y-auto;
+            @apply max-h-[calc(100vh-calc(var(--header-height,0px)*2))];
+        }
 
         .modal__list {
             li {

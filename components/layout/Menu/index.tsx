@@ -37,50 +37,53 @@ const Menu = ({ open, onOpenChange, social, items }: MenuProps): React.ReactElem
                     MENU
                 </Heading>
 
-                <Container>
-                    <Columns
-                        className="items-center"
-                        gutterY={5}>
-                        <Columns.Column
-                            offset={2}
-                            xs={10}
-                            md={7}>
-                            {items && items.length > 0 && (
-                                <List
-                                    className="modal__list"
-                                    items={items.map((item) => {
-                                        return {
-                                            children: (
-                                                <Button
-                                                    as="anchor"
-                                                    href={item?.href}
-                                                    target={item?.target}>
-                                                    <Heading
-                                                        as="h3"
-                                                        variant="section">
-                                                        {item.children}
-                                                    </Heading>
-                                                </Button>
-                                            ),
-                                        };
-                                    })}
-                                />
-                            )}
-                        </Columns.Column>
+                <section className="modal__menu">
+                    <Container>
+                        <Columns
+                            className="items-center"
+                            gutterY={5}>
+                            <Columns.Column
+                                offset={2}
+                                xs={10}
+                                md={7}>
+                                {items && items.length > 0 && (
+                                    <List
+                                        className="modal__list"
+                                        items={items.map((item) => {
+                                            return {
+                                                children: (
+                                                    <Button
+                                                        as="anchor"
+                                                        href={item?.href}
+                                                        target={item?.target}>
+                                                        <Heading
+                                                            as="h3"
+                                                            variant="section">
+                                                            {item.children}
+                                                        </Heading>
+                                                    </Button>
+                                                ),
+                                            };
+                                        })}
+                                    />
+                                )}
+                            </Columns.Column>
 
-                        <Columns.Column
-                            offset={2}
-                            xs={10}
-                            md={1}>
-                            <List.SocialMedia
-                                direction={width > 992 ? 'vertical' : 'horizontal'}
-                                size={socialIconSize}
-                                color="light"
-                                items={social}
-                            />
-                        </Columns.Column>
-                    </Columns>
-                </Container>
+                            <Columns.Column
+                                offset={2}
+                                xs={10}
+                                lg={1}
+                                className="lg:fixed lg:right-5 lg:mt-0 top-1/2 lg:-translate-y-1/2">
+                                <List.SocialMedia
+                                    direction={width > 992 ? 'vertical' : 'horizontal'}
+                                    size={socialIconSize}
+                                    color="light"
+                                    items={social}
+                                />
+                            </Columns.Column>
+                        </Columns>
+                    </Container>
+                </section>
             </DialogContent>
         </Dialog>
     );
