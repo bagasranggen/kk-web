@@ -1,7 +1,9 @@
 import React, { PropsWithChildren } from 'react';
 
 import { ArrayStringProps, ClassnameProps } from '@/libs/@types';
-import { cn, joinArrayString } from '@/libs/utils';
+import { joinArrayString } from '@/libs/utils';
+
+import { cn } from 'cn';
 
 export type ProductLabelProps = {
     title: PropsWithChildren['children'];

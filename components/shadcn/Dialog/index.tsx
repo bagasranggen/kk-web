@@ -3,9 +3,10 @@
 import * as React from 'react';
 import { Dialog as DialogPrimitive, DialogRootProps } from '@base-ui/react/dialog';
 
-import { cn } from '@/libs/utils';
-import { Button } from '@/components/shadcn/Button';
+import { cn } from 'cn';
 import { XIcon } from 'lucide-react';
+
+import { Button } from '@/components/shadcn/Button';
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
     return (
