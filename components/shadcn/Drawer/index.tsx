@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Drawer as DrawerPrimitive } from '@base-ui/react/drawer';
+import { Drawer as DrawerPrimitive, DrawerRootProps } from '@base-ui/react/drawer';
 import { cn } from 'cn';
 
 type DrawerContextProps = {
@@ -122,13 +122,13 @@ function DrawerContent({ className, children, ...props }: DrawerPrimitive.Popup.
                     data-snap-points={hasSnapPoints ? '' : undefined}
                     className={cn(
                         // Base.
-                        'group/drawer-popup pointer-events-auto fixed z-50 m-(--drawer-inset,0px) flex h-(--drawer-content-height) max-h-(--drawer-content-max-height,none) min-h-0 w-(--drawer-content-width,auto) transform-[translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] flex-col bg-popover text-sm text-popover-foreground transition-[transform,height,opacity,filter] duration-450 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform outline-none select-none [interpolate-size:allow-keywords]',
+                        'group/drawer-popup pointer-events-auto fixed z-50 m-(--drawer-inset,0px) flex h-(--drawer-content-height) max-h-(--drawer-content-max-height,none) min-h-0 w-(--drawer-content-width,auto) transform-[translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] flex-col bg-popover text-popover-foreground transition-[transform,height,opacity,filter] duration-450 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform outline-none select-none [interpolate-size:allow-keywords]',
                         // Nested.
                         'data-nested-drawer-open:overflow-hidden data-nested-drawer-open:brightness-95',
                         // Bleed.
                         'after:pointer-events-none after:absolute after:bg-(--drawer-bleed-background,var(--color-popover)) data-[swipe-axis=x]:after:inset-y-0 data-[swipe-axis=x]:after:w-(--bleed) data-[swipe-axis=y]:after:inset-x-0 data-[swipe-axis=y]:after:h-(--bleed) data-[swipe-direction=down]:after:top-full data-[swipe-direction=left]:after:right-full data-[swipe-direction=right]:after:left-full data-[swipe-direction=up]:after:bottom-full',
                         // Sizing.
-                        '[--drawer-content-height:var(--drawer-height,auto)] data-[swipe-axis=x]:[--drawer-content-width:75%] data-[swipe-axis=y]:[--drawer-content-max-height:calc(100dvh-6rem)] data-[swipe-axis=y]:data-snap-points:[--drawer-content-height:100dvh] data-[swipe-axis=x]:sm:[--drawer-content-width:24rem]',
+                        '[--drawer-content-height:var(--drawer-height,auto)] data-[swipe-axis=y]:[--drawer-content-max-height:calc(100dvh-6rem)] data-[swipe-axis=y]:data-snap-points:[--drawer-content-height:100dvh]',
                         // Stack.
                         '[--bleed:3rem] [--peek:1rem] [--stack-height:var(--drawer-frontmost-height,var(--drawer-height,0px))] [--stack-peek-offset:max(0px,calc((var(--nested-drawers)-var(--stack-progress))*var(--peek)))] [--stack-progress:clamp(0,var(--drawer-swipe-progress),1)] [--stack-scale-base:max(0,calc(1-(var(--nested-drawers)*var(--stack-step))))] [--stack-scale:clamp(0,calc(var(--stack-scale-base)+(var(--stack-step)*var(--stack-progress))),1)] [--stack-shrink:calc(1-var(--stack-scale))] [--stack-step:0.05]',
                         // Transitions.
@@ -189,7 +189,7 @@ function DrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props) {
     return (
         <DrawerPrimitive.Title
             data-slot="drawer-title"
-            className={cn('font-heading text-base font-medium text-foreground', className)}
+            className={cn('font-heading font-medium text-foreground', className)}
             {...props}
         />
     );
@@ -199,7 +199,7 @@ function DrawerDescription({ className, ...props }: DrawerPrimitive.Description.
     return (
         <DrawerPrimitive.Description
             data-slot="drawer-description"
-            className={cn('text-sm text-balance text-muted-foreground', className)}
+            className={cn('text-balance text-muted-foreground', className)}
             {...props}
         />
     );
@@ -218,3 +218,5 @@ export {
     DrawerTitle,
     DrawerDescription,
 };
+
+export type { DrawerRootProps };

@@ -6,13 +6,13 @@
         .quantity__text {
             @apply shrink-0;
             @apply border-light-dark;
-            @apply py-[0.8rem];
+            @apply py-[0.3rem] lg:py-[0.8rem];
         }
 
         .quantity__btn {
             @apply cursor-pointer;
             @apply basis-2.5;
-            @apply px-1.5;
+            @apply px-1 lg:px-1.5;
             @apply flex justify-center items-center;
             @apply first:border-t first:border-b first:border-l;
             @apply last:border-t last:border-b last:border-r;
@@ -29,9 +29,11 @@
             @apply text-center;
             @apply border-b;
             @apply border-t;
+            @apply max-lg:text-[1.2rem] text-base;
+            @apply px-0.5;
 
             input {
-                @apply max-w-3.5;
+                @apply max-w-2.5 md:max-w-3.5;
                 @apply focus-within:outline-none;
                 @apply text-center;
 

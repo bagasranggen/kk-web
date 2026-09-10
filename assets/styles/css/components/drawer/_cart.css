@@ -1,0 +1,16 @@
+@layer components {
+    .drawer.drawer--cart {
+        @apply md:w-[50vw] lg:w-[60vw] max-w-50;
+
+        .drawer__cart {
+            @apply px-2 pb-2 pt-6;
+            @apply overflow-y-auto max-h-[calc(100%-var(--drawer-total-height,0))];
+        }
+
+        .drawer__total {
+            @apply bg-kk-accent-light;
+            @apply p-2;
+            @apply absolute bottom-0 w-full;
+        }
+    }
+}

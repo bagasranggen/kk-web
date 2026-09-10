@@ -61,7 +61,7 @@ const Cart = ({ items }: CartProps): React.ReactElement | null => {
                                         as="button"
                                         type="button"
                                         className="cart__delete">
-                                        <Trash size={14} />
+                                        <Trash />
                                     </Button>
                                 </div>
 
