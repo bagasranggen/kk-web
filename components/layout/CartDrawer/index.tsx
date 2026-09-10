@@ -36,7 +36,7 @@ const CartDrawer = ({ open, onOpenChange, items, price }: CartDrawerProps): Reac
                     as="button"
                     active
                     withBorder={false}
-                    className="absolute right-1 top-0.5"
+                    className="drawer__close"
                     onClick={() => {
                         if (onOpenChange) onOpenChange(false, {} as any);
                     }}

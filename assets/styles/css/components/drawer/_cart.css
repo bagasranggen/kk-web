@@ -12,5 +12,10 @@
             @apply p-2;
             @apply absolute bottom-0 w-full;
         }
+
+        .drawer__close {
+            @apply absolute right-1 top-0.5;
+            @apply backdrop-blur-lg;
+        }
     }
 }
