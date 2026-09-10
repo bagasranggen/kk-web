@@ -1,0 +1,39 @@
+@layer components {
+    .input.input--label {
+        @apply relative;
+        @apply border border-light-dark;
+        @apply focus-within:border-dark;
+        @apply transition-colors;
+
+        input {
+            @apply w-full;
+            @apply px-[1.8rem] pb-1.5 pt-2.5;
+            @apply focus-visible:outline-none;
+            @apply placeholder:opacity-0;
+        }
+
+        label {
+            @apply absolute left-[1.8rem] top-1/2 -translate-y-1/2;
+            @apply origin-top-left;
+            @apply uppercase font-medium tracking-0.2;
+            @apply mt-0;
+            @apply transition-[scale,translate,top,margin-top,font-weight];
+        }
+
+        &.input--focus {
+            label {
+                @apply font-black;
+                @apply mt-0.5;
+                @apply top-0 translate-y-0;
+                @apply scale-75;
+            }
+        }
+
+        label {
+            @apply peer-not-placeholder-shown:font-black;
+            @apply peer-not-placeholder-shown:mt-0.5;
+            @apply peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:translate-y-0;
+            @apply peer-not-placeholder-shown:scale-75;
+        }
+    }
+}
