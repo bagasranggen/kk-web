@@ -48,3 +48,10 @@ export const Default: Story = {
         items: CART_ITEMS,
     },
 };
+
+export const NoQuantity: Story = {
+    args: {
+        withQuantity: false,
+        items: CART_ITEMS,
+    },
+};

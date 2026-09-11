@@ -11,17 +11,23 @@ import Button from '@/components/common/Button';
 import ProductLabel, { ProductLabelProps } from '@/components/common/Banner/Product/ProductLabel';
 
 export const PRODUCT_FORM_HANDLES = {
+    TITLE: 'title',
     COLOR: 'color',
     SIZE: 'size',
     PRICE: 'price',
     QTY: 'qty',
-};
+    STOCK: 'stock',
+    CART_ITEM_ID: 'cartItemId',
+} as const;
 
 export type ProductFormFields = {
-    [PRODUCT_FORM_HANDLES.COLOR]: string;
-    [PRODUCT_FORM_HANDLES.SIZE]: string;
+    [PRODUCT_FORM_HANDLES.TITLE]: string;
+    [PRODUCT_FORM_HANDLES.COLOR]?: string;
+    [PRODUCT_FORM_HANDLES.SIZE]?: string;
     [PRODUCT_FORM_HANDLES.PRICE]: number;
     [PRODUCT_FORM_HANDLES.QTY]: number;
+    [PRODUCT_FORM_HANDLES.STOCK]: number;
+    [PRODUCT_FORM_HANDLES.CART_ITEM_ID]: number;
 };
 
 export type ProductFormListItemProps = {
@@ -31,6 +37,7 @@ export type ProductFormListItemProps = {
 export type ProductFormProps = {
     title?: string;
     price?: number;
+    stock?: number;
     priceLabel?: BaseHeadingProps['children'];
     colors?: ({ color: string } & ProductFormListItemProps)[];
     sizes?: ProductFormListItemProps[];
@@ -42,6 +49,7 @@ const ProductForm = ({
     title,
     price,
     priceLabel,
+    stock,
     colors,
     sizes,
     sizesGuideOnClick,
@@ -58,7 +66,8 @@ const ProductForm = ({
             title,
             price: price ?? 0,
             qty: 1,
-            cartItemId: new Date().getTime().toString(),
+            cartItemId: new Date().getTime(),
+            stock: stock ?? 0,
         },
     });
 
