@@ -1,7 +1,8 @@
-import { ProductProps } from '@/components/common/Banner';
+import { createArrayFromNumber, createPicsumImage, createPictureItem } from '@/libs/factories';
+
 import parse from 'html-react-parser';
-import { ProductFormFields } from '@/components/common/Banner/Product/ProductForm';
-import { createArrayFromNumber } from '@/libs/factories';
+
+import { ProductProps, ProductFormFields } from '@/components/common/Banner';
 
 export const PRODUCT_DESCRIPTION: ProductProps['description'] = parse(`
     <p>
@@ -30,19 +31,28 @@ export const SUBMIT_PRODUCT: ProductFormFields = {
     title: 'Korekayu Logo',
     price: 200000,
     qty: 1,
-    cartItemId: 1789054379115,
+    cartItemId: '1789054379115',
     stock: 0,
     color: 'red',
     size: 's',
 };
 
-export const SUBMIT_PRODUCT_ITEMS: ProductFormFields[] = createArrayFromNumber(3).map((_, i) => {
+export const SUBMIT_PRODUCT_ITEMS: ProductFormFields[] = createArrayFromNumber(4).map((_, i) => {
     const isOdd = i % 2 === 0;
 
     return {
-        cartItemId: new Date().getTime() + i,
-        title: 'Korekayu Logo',
-        price: 200000 * i,
+        media: [
+            createPictureItem({
+                item: createPicsumImage({
+                    id: 239 + i,
+                    width: 200,
+                    height: 266,
+                }),
+            }),
+        ],
+        cartItemId: new Date().getTime().toString() + i,
+        title: 'Korekayu Logo ' + (i + 1),
+        price: 200000 * (i + 1),
         qty: 1,
         stock: 5,
         ...(i !== 0 && isOdd ? { color: 'red' } : { color: undefined }),

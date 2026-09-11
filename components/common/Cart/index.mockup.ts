@@ -15,7 +15,8 @@ export const CART_ITEMS: CartProps['items'] = createArrayFromNumber(6).map((_, i
     if (isOdd) priceLabel = 'IDR 125,000';
 
     return {
-        cartItemId: new Date().getTime(),
+        cartItemId: new Date().getTime().toString() + i,
+        title: 'Korekayu Logo ' + i,
         media: [
             createPictureItem({
                 item: createPicsumImage({

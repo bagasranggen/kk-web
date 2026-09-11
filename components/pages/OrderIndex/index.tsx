@@ -41,7 +41,10 @@ const OrderIndex = ({}: OrderIndexProps): React.ReactElement => {
                         className="order-first lg:order-last"
                         lg={4}
                         xl={5}>
-                        <Cart items={CART_ITEMS} />
+                        <Cart
+                            withQuantity={false}
+                            items={CART_ITEMS}
+                        />
                     </Columns.Column>
                 </Columns>
             </Container>

@@ -1,11 +1,13 @@
+import { Suspense, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
 
-import CartDrawer from './index';
-import { CART_ITEMS } from '@/components/common/Cart/index.mockup';
-import { useState } from 'react';
 import { useCartStateContext } from '@/store/context';
+import { NavigationEvents } from '@/libs/hooks';
+
+import CartDrawer from './index';
+import { SUBMIT_PRODUCT_ITEMS } from '@/components/common/Banner/Product/index.mockup';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -30,20 +32,40 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         open: true,
-        items: CART_ITEMS,
-        price: 'IDR 500,000',
+        onSubmit: (data) => {
+            console.log('submit');
+        },
     },
     render: (args) => {
         const [open, setOpen] = useState(true);
-        const { items } = useCartStateContext();
+        const { items, setItems, totalPriceCurrency, updateCartQuantityHandler } = useCartStateContext();
 
         return (
-            <CartDrawer
-                {...args}
-                open={open}
-                onOpenChange={setOpen}
-                items={items}
-            />
+            <>
+                <Suspense fallback={null}>
+                    <NavigationEvents
+                        endHandler={() => {
+                            setItems(SUBMIT_PRODUCT_ITEMS);
+                        }}
+                    />
+                </Suspense>
+
+                <CartDrawer
+                    {...args}
+                    open={open}
+                    onOpenChange={setOpen}
+                    items={items}
+                    price={totalPriceCurrency}
+                    onRemove={(data) => {
+                        console.log('remove');
+                        updateCartQuantityHandler(data);
+                    }}
+                    onSubmit={(data) => {
+                        console.log('submit');
+                        updateCartQuantityHandler(data);
+                    }}
+                />
+            </>
         );
     },
 };

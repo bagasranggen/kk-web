@@ -12,9 +12,9 @@ import Heading from '@/components/common/Heading';
 export type CartDrawerProps = {
     items?: CartProps['items'];
     price?: PropsWithChildren['children'];
-} & Pick<DrawerRootProps, 'open' | 'onOpenChange'>;
+} & (Pick<DrawerRootProps, 'open' | 'onOpenChange'> & Pick<CartProps, 'onSubmit' | 'onRemove'>);
 
-const CartDrawer = ({ open, onOpenChange, items, price }: CartDrawerProps): React.ReactElement => {
+const CartDrawer = ({ open, onOpenChange, items, price, onSubmit, onRemove }: CartDrawerProps): React.ReactElement => {
     const [totalRef, { height, y }] = useMeasure();
 
     let style: undefined | CSSProperties = undefined;
@@ -43,7 +43,13 @@ const CartDrawer = ({ open, onOpenChange, items, price }: CartDrawerProps): Reac
                 />
 
                 <div className="drawer__cart">
-                    {items && items.length > 0 && <Cart items={items} />}
+                    {items && items.length > 0 && (
+                        <Cart
+                            items={items}
+                            onSubmit={onSubmit}
+                            onRemove={onRemove}
+                        />
+                    )}
                     {(!items || items.length === 0) && <Heading className="text-center">No items in cart yet</Heading>}
                 </div>
 
@@ -56,7 +62,11 @@ const CartDrawer = ({ open, onOpenChange, items, price }: CartDrawerProps): Reac
                     </div>
 
                     <div className="mt-1 text-end">
-                        <Button.Block as="button">Checkout</Button.Block>
+                        <Button.Block
+                            as="anchor"
+                            href="#">
+                            Checkout
+                        </Button.Block>
                     </div>
                 </div>
             </DrawerContent>

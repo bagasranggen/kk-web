@@ -4,7 +4,7 @@ import { createPicsumImage, createPictureItem } from '@/libs/factories';
 
 import Columns from '@/components/common/Columns';
 import Heading from '@/components/common/Heading';
-import ProductForm, { ProductFormProps } from '@/components/common/Banner/Product/ProductForm';
+import ProductForm, { ProductFormProps, ProductFormFields } from '@/components/common/Banner/Product/ProductForm';
 import Picture from '@/components/common/Picture';
 
 export type ProductProps = {
@@ -53,3 +53,5 @@ const Product = ({
 };
 
 export default Product;
+
+export type { ProductFormFields };
