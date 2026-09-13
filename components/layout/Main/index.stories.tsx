@@ -1,11 +1,17 @@
+import { Suspense } from 'react';
+
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
+
+import { NavigationEvents } from '@/libs/hooks';
+import { useCartStateContext } from '@/store/context';
 
 import Main from './index';
 import Container from '@/components/common/Container';
 import { LIST_SOCIAL_MEDIA } from '@/components/common/List/SocialMedia/index.mock';
 import { LIST_MENU } from '@/components/layout/Menu/index.mock';
+import { SUBMIT_PRODUCT_ITEMS } from '@/components/common/Banner/Product/index.mockup';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -88,5 +94,22 @@ export const Default: Story = {
                 </Container>
             </>
         ),
+    },
+    render: (args) => {
+        const { setItems } = useCartStateContext();
+
+        return (
+            <>
+                <Suspense fallback={null}>
+                    <NavigationEvents
+                        endHandler={() => {
+                            setItems(SUBMIT_PRODUCT_ITEMS);
+                        }}
+                    />
+                </Suspense>
+
+                <Main {...args} />
+            </>
+        );
     },
 };

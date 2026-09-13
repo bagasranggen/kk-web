@@ -25,6 +25,7 @@ export type CartState = {
     totalPrice: number;
     totalPriceCurrency: React.ReactNode;
     updateCartQuantityHandler: (props: CartItemFormFields) => void;
+    count?: number;
 };
 
 export const CartStateContext = createContext<CartState>({
@@ -35,6 +36,7 @@ export const CartStateContext = createContext<CartState>({
     totalPrice: 0,
     totalPriceCurrency: '',
     updateCartQuantityHandler: () => {},
+    count: 0,
 });
 
 const CART_KEY = 'cart';
