@@ -59,3 +59,31 @@ export const SUBMIT_PRODUCT_ITEMS: ProductFormFields[] = createArrayFromNumber(4
         ...(i !== 0 ? { size: 's' } : { size: undefined }),
     };
 });
+
+export const PRODUCT_MEDIA_ITEMS = createArrayFromNumber(4).map((_, i) => {
+    return {
+        media: [
+            createPictureItem({
+                item: createPicsumImage({
+                    id: 239 + i,
+                    width: 1200,
+                    height: 1600,
+                }),
+            }),
+        ],
+    };
+});
+
+export const PRODUCT_MEDIA_THUMBNAIL_ITEMS = createArrayFromNumber(4).map((_, i) => {
+    return {
+        media: [
+            createPictureItem({
+                item: createPicsumImage({
+                    id: 239 + i,
+                    width: 200,
+                    height: 256,
+                }),
+            }),
+        ],
+    };
+});

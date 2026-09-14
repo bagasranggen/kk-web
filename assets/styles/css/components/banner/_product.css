@@ -2,6 +2,52 @@
     .banner.banner--product {
         @apply justify-between;
 
+        .banner__media {
+            @apply relative;
+        }
+
+        .banner__gallery {
+            /*--swiper-navigation-top-offset: var(--swiper-navigation-size);*/
+            --swiper-navigation-top-offset: calc(100% - var(--swiper-navigation-size));
+            --swiper-navigation-sides-offset: 1.5rem;
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                @apply bg-kk-primary;
+                @apply p-1;
+
+                svg path {
+                    @apply fill-light;
+                }
+            }
+
+            .swiper-button-prev {
+                @apply origin-bottom-right;
+                @apply scale-75;
+
+                left: calc(
+                    100% - calc(var(--swiper-navigation-size) * 2) - 1rem - var(--swiper-navigation-sides-offset, 0px)
+                ) !important;
+            }
+        }
+
+        .banner__thumb {
+            @apply p-[0.7rem];
+            @apply bg-light;
+            @apply absolute;
+            @apply z-10;
+            @apply bottom-1.5 left-1.5;
+            @apply w-20;
+
+            .swiper-slide {
+                @apply cursor-pointer;
+
+                &:not(.swiper-slide-thumb-active) {
+                    @apply opacity-50;
+                }
+            }
+        }
+
         .banner__label-heading {
             @apply flex justify-between items-center;
         }

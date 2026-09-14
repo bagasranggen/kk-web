@@ -6,6 +6,8 @@ import Columns from '@/components/common/Columns';
 import Heading from '@/components/common/Heading';
 import ProductForm, { ProductFormProps, ProductFormFields } from '@/components/common/Banner/Product/ProductForm';
 import Picture from '@/components/common/Picture';
+import ProductMedia from '@/components/common/Banner/Product/ProductMedia';
+import { PRODUCT_MEDIA_ITEMS, PRODUCT_MEDIA_THUMBNAIL_ITEMS } from '@/components/common/Banner/Product/index.mockup';
 
 export type ProductProps = {
     title?: string;
@@ -24,7 +26,10 @@ const Product = ({
     return (
         <Columns className="banner banner--product">
             <Columns.Column lg={6}>
-                <Picture items={[createPictureItem({ item: createPicsumImage({ width: 1200, height: 1600 }) })]} />
+                <ProductMedia
+                    items={PRODUCT_MEDIA_ITEMS}
+                    thumbnails={PRODUCT_MEDIA_THUMBNAIL_ITEMS}
+                />
             </Columns.Column>
 
             <Columns.Column

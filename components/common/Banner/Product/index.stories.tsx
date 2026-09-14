@@ -8,8 +8,12 @@ import ProductLabel from '@/components/common/Banner/Product/ProductLabel';
 import {
     PRODUCT_COLORS_ITEMS,
     PRODUCT_DESCRIPTION,
+    PRODUCT_MEDIA_ITEMS,
+    PRODUCT_MEDIA_THUMBNAIL_ITEMS,
     PRODUCT_SIZES_ITEMS,
 } from '@/components/common/Banner/Product/index.mockup';
+import ProductMedia from '@/components/common/Banner/Product/ProductMedia';
+import Columns from '@/components/common/Columns';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -69,6 +73,24 @@ export const Label: StoryObj<typeof ProductLabel> = {
             <Container>
                 <ProductLabel {...args} />
             </Container>
+        );
+    },
+};
+
+export const Media: StoryObj<typeof ProductMedia> = {
+    args: {
+        items: PRODUCT_MEDIA_ITEMS,
+        thumbnails: PRODUCT_MEDIA_THUMBNAIL_ITEMS,
+    },
+    render: (args) => {
+        return (
+            <div className="banner banner--product">
+                <Columns>
+                    <Columns.Column md={6}>
+                        <ProductMedia {...args} />
+                    </Columns.Column>
+                </Columns>
+            </div>
         );
     },
 };
