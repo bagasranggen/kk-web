@@ -25,6 +25,10 @@
                 @apply border-dark;
                 @apply border-b;
 
+                &:not(:nth-child(4n)) {
+                    @apply 3xl:border-r;
+                }
+
                 &:not(:nth-child(3n)) {
                     @apply lg:border-r;
                 }

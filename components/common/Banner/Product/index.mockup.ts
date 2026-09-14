@@ -69,6 +69,22 @@ export const PRODUCT_MEDIA_ITEMS = createArrayFromNumber(4).map((_, i) => {
                     width: 1200,
                     height: 1600,
                 }),
+                media: 992,
+            }),
+            createPictureItem({
+                item: createPicsumImage({
+                    id: 239 + i,
+                    width: 1200,
+                    height: 900,
+                }),
+                media: 576,
+            }),
+            createPictureItem({
+                item: createPicsumImage({
+                    id: 239 + i,
+                    width: 800,
+                    height: 1067,
+                }),
             }),
         ],
     };

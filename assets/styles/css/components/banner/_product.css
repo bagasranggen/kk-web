@@ -3,7 +3,8 @@
         @apply justify-between;
 
         .banner__media {
-            @apply relative;
+            @apply relative lg:sticky;
+            @apply lg:top-0;
         }
 
         .banner__gallery {
@@ -68,7 +69,7 @@
         }
 
         .banner__price {
-            @apply text-[4rem] tracking-0.2;
+            @apply text-[3rem] lg:text-[4rem] tracking-0.3 lg:tracking-0.2;
             @apply font-light;
         }
 

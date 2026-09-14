@@ -47,7 +47,7 @@ const ProductListingIndex = ({ entries }: ProductListingIndexProps): React.React
             <Card.Thumbnail
                 variant="grid"
                 columns={{ gutterX: 0, gutterY: 0 }}
-                column={{ md: 6, lg: 4 }}
+                column={{ md: 6, lg: 4, xxxl: 3 }}
                 items={entries?.products ?? []}
             />
         </>

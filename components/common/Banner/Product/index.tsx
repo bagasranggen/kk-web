@@ -1,40 +1,42 @@
 import React from 'react';
 
-import { createPicsumImage, createPictureItem } from '@/libs/factories';
-
 import Columns from '@/components/common/Columns';
 import Heading from '@/components/common/Heading';
 import ProductForm, { ProductFormProps, ProductFormFields } from '@/components/common/Banner/Product/ProductForm';
-import Picture from '@/components/common/Picture';
-import ProductMedia from '@/components/common/Banner/Product/ProductMedia';
-import { PRODUCT_MEDIA_ITEMS, PRODUCT_MEDIA_THUMBNAIL_ITEMS } from '@/components/common/Banner/Product/index.mockup';
+import ProductMedia, { ProductMediaProps } from '@/components/common/Banner/Product/ProductMedia';
 
 export type ProductProps = {
     title?: string;
     description?: React.ReactNode;
+    media?: Pick<ProductMediaProps, 'items' | 'thumbnails'>;
 } & Pick<ProductFormProps, 'colors' | 'sizes' | 'sizesGuideOnClick' | 'price' | 'priceLabel' | 'onSubmit'>;
 
 const Product = ({
     sizes,
     colors,
     title,
+    media,
     description,
     price,
     priceLabel,
     onSubmit,
 }: ProductProps): React.ReactElement => {
     return (
-        <Columns className="banner banner--product">
-            <Columns.Column lg={6}>
-                <ProductMedia
-                    items={PRODUCT_MEDIA_ITEMS}
-                    thumbnails={PRODUCT_MEDIA_THUMBNAIL_ITEMS}
-                />
+        <Columns
+            gutterY={3}
+            className="banner banner--product">
+            <Columns.Column
+                // md={6}
+                lg={6}
+                className="max-md:px-0">
+                {media && <ProductMedia {...media} />}
             </Columns.Column>
 
             <Columns.Column
-                lg={5}
-                className="lg:pt-6">
+                // md={6}
+                lg={6}
+                xl={5}
+                className="lg:pt-3 xl:pt-6">
                 <Heading
                     as="h1"
                     family="bodoni-moda"
