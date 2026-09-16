@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
 
 import Label from './index';
+import { INPUT_SELECT } from '@/components/common/Input/Label/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -31,5 +32,42 @@ export const Default: Story = {
         placeholder: 'placeholder',
         id: 'text',
         error: 'This is error label',
+    },
+};
+
+export const Disabled: Story = {
+    args: {
+        type: 'text',
+        placeholder: 'placeholder',
+        id: 'text',
+        error: 'This is error label',
+        disabled: true,
+    },
+};
+
+export const Select: Story = {
+    args: {
+        type: 'select',
+        placeholder: 'placeholder',
+        id: 'text',
+        items: INPUT_SELECT,
+        error: 'This is error label',
+        style: {
+            minWidth: '230px',
+        },
+    },
+};
+
+export const SelectDisabled: Story = {
+    args: {
+        type: 'select',
+        placeholder: 'placeholder',
+        id: 'text',
+        items: INPUT_SELECT,
+        disabled: true,
+        error: 'This is error label',
+        style: {
+            minWidth: '230px',
+        },
     },
 };

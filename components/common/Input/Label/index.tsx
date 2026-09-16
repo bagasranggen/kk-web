@@ -35,6 +35,8 @@ const Label = ({ id, placeholder, onFocus, onBlurCapture, error, ...props }: Lab
                     {...props}
                 />
 
+                {props?.type === 'select' && <div className="input__arrow" />}
+
                 <label htmlFor={id}>
                     {placeholder}
                     {(props?.required || props?.hook?.required) && <sup className="text-rose-500">*</sup>}

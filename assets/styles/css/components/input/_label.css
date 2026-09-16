@@ -3,35 +3,77 @@
         @apply relative;
         @apply border border-light-dark;
         @apply focus-within:border-dark;
+        @apply lg:hover:not-focus-within:border-dark/60;
         @apply transition-colors;
 
-        input {
+        input,
+        select {
             @apply w-full;
-            @apply px-[1.8rem] pb-1.5 pt-2.5;
             @apply focus-visible:outline-none;
             @apply placeholder:opacity-0;
+            @apply px-1.25 md:px-[1.8rem];
+            @apply pb-0.5 md:pb-1;
+            @apply pt-2 md:pt-3;
+
+            &:disabled {
+                @apply cursor-not-allowed;
+                @apply bg-dark/10;
+                @apply text-dark/60;
+
+                ~ label {
+                    @apply opacity-50;
+                }
+            }
+        }
+
+        select {
+            @apply appearance-none;
+            @apply not-disabled:cursor-pointer;
+        }
+
+        input {
+            /*@apply cursor-text;*/
         }
 
         label {
-            @apply absolute left-[1.8rem] top-1/2 -translate-y-1/2;
+            @apply pointer-events-none;
+            @apply absolute left-1.25 md:left-[1.8rem] top-1/2 -translate-y-1/2;
             @apply origin-top-left;
             @apply uppercase font-medium tracking-0.2;
             @apply mt-0;
             @apply transition-[scale,translate,top,margin-top,font-weight];
         }
 
+        .input__arrow {
+            @apply absolute;
+            @apply right-1.5 md:right-2;
+            @apply bottom-[calc(1rem-calc(-2.3rem)/2.5)];
+            @apply border-r border-b border-black;
+            @apply h-1;
+            @apply aspect-square;
+            @apply rotate-45;
+            @apply transition-transform;
+            /*@apply rotate-225;*/
+        }
+
         &.input--focus {
             label {
                 @apply font-black;
-                @apply mt-0.5;
+                @apply mt-0.5 md:mt-1;
                 @apply top-0 translate-y-0;
                 @apply scale-75;
             }
         }
 
+        /*select:focus {*/
+        /*    + .input__arrow {*/
+        /*        @apply rotate-225;*/
+        /*    }*/
+        /*}*/
+
         label {
             @apply peer-not-placeholder-shown:font-black;
-            @apply peer-not-placeholder-shown:mt-0.5;
+            @apply peer-not-placeholder-shown:mt-0.5 md:peer-not-placeholder-shown:mt-1;
             @apply peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:translate-y-0;
             @apply peer-not-placeholder-shown:scale-75;
         }
