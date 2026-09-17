@@ -11,16 +11,32 @@ import List from '@/components/common/List';
 import Container from '@/components/common/Container';
 import HomepageSchedule, { HomepageScheduleProps } from '@/components/pages/HomepageIndex/HomepageSchedule';
 import HomepageDiscography from '@/components/pages/HomepageIndex/HomepageDiscography';
+import HomepageBanner, { HomepageBannerProps } from '@/components/pages/HomepageIndex/HomepageBanner';
 
 export type HomepageIndexProps = {
+    banner?: HomepageBannerProps['items'];
     schedule?: HomepageScheduleProps['items'];
 };
 
-const HomepageIndex = ({ schedule }: HomepageIndexProps): React.ReactElement => {
+const HomepageIndex = ({ banner, schedule }: HomepageIndexProps): React.ReactElement => {
     return (
         <>
-            {schedule && schedule.length > 0 && (
+            {banner && banner.length > 0 && (
                 <section>
+                    <HomepageBanner
+                        items={banner}
+                        cta={{
+                            href: '#section1',
+                            children: 'Scroll',
+                        }}
+                    />
+                </section>
+            )}
+
+            {schedule && schedule.length > 0 && (
+                <section
+                    className="mt-15"
+                    id="section1">
                     <Container>
                         <Heading
                             as="h2"

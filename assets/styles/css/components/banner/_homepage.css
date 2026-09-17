@@ -1,0 +1,61 @@
+@layer components {
+    .banner.banner--homepage {
+        --swiper-pagination-bottom: 5rem;
+
+        .banner__container {
+            @apply h-[85vh] lg:h-screen;
+            @apply max-lg:min-h-60;
+            @apply flex flex-col justify-center;
+            @apply relative;
+            @apply z-10;
+        }
+
+        .banner__btn-container,
+        .swiper-pagination {
+            @apply left-1/2!;
+            @apply -translate-x-1/2;
+        }
+
+        .banner__btn-container {
+            @apply absolute;
+            @apply z-10;
+            @apply bottom-(--swiper-pagination-bottom,0px);
+            @apply text-right;
+            @apply pointer-events-none;
+
+            .btn {
+                @apply pointer-events-auto;
+            }
+        }
+
+        .banner__title {
+            @apply text-center;
+            @apply text-light;
+            @apply text-[5rem] leading-6;
+        }
+
+        .banner__slide {
+            @apply bg-(image:--banner-bg-mobile) lg:bg-(image:--banner-bg-desktop);
+            @apply bg-no-repeat;
+            @apply bg-cover;
+            @apply bg-center;
+        }
+
+        .swiper-pagination {
+            @apply container;
+            @apply text-left!;
+            @apply flex gap-0.5;
+            @apply pb-2.5;
+
+            .swiper-pagination__bullet {
+                @apply text-[1.2rem] font-black;
+                @apply text-light;
+                @apply cursor-pointer;
+
+                &:not(.swiper-pagination__bullet--active) {
+                    @apply opacity-30;
+                }
+            }
+        }
+    }
+}

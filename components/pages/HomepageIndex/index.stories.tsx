@@ -4,10 +4,12 @@ import { fn } from 'storybook/test';
 
 import HomepageIndex from './index';
 import HomepageSchedule from '@/components/pages/HomepageIndex/HomepageSchedule';
-import { LIST_SCHEDULE } from '@/components/pages/HomepageIndex/index.mock';
 import HomepageDiscography from '@/components/pages/HomepageIndex/HomepageDiscography';
 import HomepageDiscographyItem from '@/components/pages/HomepageIndex/HomepageDiscographyItem';
+import HomepageBanner from '@/components/pages/HomepageIndex/HomepageBanner';
 import Container from '@/components/common/Container';
+
+import { BANNER_ITEMS, LIST_SCHEDULE } from '@/components/pages/HomepageIndex/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -31,7 +33,21 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
     args: {
+        banner: BANNER_ITEMS,
         schedule: LIST_SCHEDULE,
+    },
+};
+
+export const Banner: StoryObj<typeof HomepageBanner> = {
+    args: {
+        items: BANNER_ITEMS,
+        cta: {
+            href: '#',
+            children: 'Scroll',
+        },
+    },
+    render: (args) => {
+        return <HomepageBanner {...args} />;
     },
 };
 

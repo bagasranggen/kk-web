@@ -3,7 +3,7 @@
 import React, { PropsWithChildren } from 'react';
 
 import { SwiperModule, SwiperOptions } from 'swiper/types';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperProps, SwiperSlide, SwiperSlideProps } from 'swiper/react';
 
 import 'swiper/css';
 
@@ -14,7 +14,7 @@ export type BaseVariantProps = {
     element?: React.ReactElement;
 };
 
-export type BaseItemProps = PropsWithChildren;
+export type BaseItemProps = SwiperSlideProps;
 
 export type BaseProps = {
     items?: BaseItemProps[];
@@ -29,7 +29,7 @@ const Base = ({ items, modulesVariant, modules: moduleProps, ...props }: BasePro
     if (moduleProps && !Array.isArray(moduleProps)) modules.push(moduleProps);
 
     let swiperProps: SwiperProps = props;
-    if (modulesVariant?.options) swiperProps = { ...swiperProps, ...modulesVariant.options };
+    if (modulesVariant?.options) swiperProps = Object.assign(swiperProps, modulesVariant.options);
 
     if (!items || items.length === 0) return null;
 
@@ -38,7 +38,10 @@ const Base = ({ items, modulesVariant, modules: moduleProps, ...props }: BasePro
             modules={modules}
             {...swiperProps}>
             {items.map((item: BaseItemProps, i: number) => (
-                <SwiperSlide key={i}>{item.children}</SwiperSlide>
+                <SwiperSlide
+                    key={i}
+                    {...item}
+                />
             ))}
 
             {modulesVariant?.element && modulesVariant.element}
