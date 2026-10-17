@@ -4,7 +4,7 @@ import React, { Ref, useEffect } from 'react';
 
 import { ArrayStringProps, ClassnameProps } from '@/libs/@types';
 import { joinArrayString } from '@/libs/utils';
-import { useScrollDirection } from '@/libs/hooks';
+import { useMounted, useScrollDirection } from '@/libs/hooks';
 import { useLayoutStateContext } from '@/store/context';
 
 import { useMeasure } from 'react-use';
@@ -19,10 +19,12 @@ export type NavigationProps = {
 } & ClassnameProps;
 
 const Navigation = ({ isOpen, className, hamburger }: NavigationProps): React.ReactElement => {
+    const mounted = useMounted();
+
     const { setHeaderHeight } = useLayoutStateContext();
     const [navRef, { height, top }] = useMeasure();
     const { y, direction } = useScrollDirection();
-    const isCenter = y > height / 2;
+    const isCenter = mounted && y > height / 2;
 
     let navClass: ArrayStringProps = ['nav'];
     if (isCenter && !isOpen) navClass.push('nav--center');
