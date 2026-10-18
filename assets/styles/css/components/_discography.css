@@ -24,7 +24,11 @@
             }
 
             .discography__title {
-                @apply text-[3rem] tracking-0.3;
+                @apply text-[2.5rem] lg:text-[3rem] tracking-0.3;
+            }
+
+            .discography__social {
+                @apply max-lg:gap-x-0.75 max-lg:gap-y-1;
             }
         }
 
