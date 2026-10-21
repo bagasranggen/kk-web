@@ -47,10 +47,14 @@ const Navigation = ({ isOpen, className, hamburger }: NavigationProps): React.Re
             ref={navRef as Ref<HTMLDivElement>}
             className={navClass}>
             <Container className="nav__container">
-                <Icon.Logo
-                    color={color}
-                    className="nav__logo"
-                />
+                <Button
+                    as="anchor"
+                    href="/">
+                    <Icon.Logo
+                        color={color}
+                        className="nav__logo"
+                    />
+                </Button>
 
                 <Button.Hamburger
                     as="button"
