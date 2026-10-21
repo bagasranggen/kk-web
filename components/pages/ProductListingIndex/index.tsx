@@ -1,25 +1,25 @@
 import React from 'react';
 
+import { PageIndexProps } from '@/libs/@types';
+
 import Container from '@/components/common/Container';
 import Heading from '@/components/common/Heading';
 import Card, { ThumbnailProps } from '@/components/common/Card';
 import List from '@/components/common/List';
 import Button, { BaseAnchorProps } from '@/components/common/Button';
 
-export type ProductListingIndexProps = {
-    entries?: {
-        categories?: {
-            isActive?: boolean;
-            cta: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
-        }[];
-        products?: ThumbnailProps['items'];
-    };
-};
+export type ProductListingIndexProps = PageIndexProps<{
+    categories?: {
+        isActive?: boolean;
+        cta: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
+    }[];
+    products?: ThumbnailProps['items'];
+}>;
 
 const ProductListingIndex = ({ entries }: ProductListingIndexProps): React.ReactElement => {
     return (
         <>
-            <Container>
+            <Container className="mt-15">
                 <Heading variant="page">Merchandise</Heading>
             </Container>
 
@@ -44,12 +44,15 @@ const ProductListingIndex = ({ entries }: ProductListingIndexProps): React.React
                 </div>
             )}
 
-            <Card.Thumbnail
-                variant="grid"
-                columns={{ gutterX: 0, gutterY: 0 }}
-                column={{ md: 6, lg: 4, xxxl: 3 }}
-                items={entries?.products ?? []}
-            />
+            {entries?.products && entries.products.length > 0 && (
+                <Card.Thumbnail
+                    variant="grid"
+                    className="mb-15"
+                    columns={{ gutterX: 0, gutterY: 0 }}
+                    column={{ md: 6, lg: 4, xxxl: 3 }}
+                    items={entries?.products}
+                />
+            )}
         </>
     );
 };

@@ -1,5 +1,9 @@
 @layer components {
     .card.card--thumbnail {
+        .card__btn {
+            @apply relative;
+        }
+
         .card__price,
         .card__title {
             @apply uppercase;
@@ -7,8 +11,15 @@
 
         .card__price {
             @apply mb-0;
-            @apply font-black;
-            @apply text-[1rem] tracking-0.1;
+            @apply font-bold;
+            @apply text-[1.4rem] tracking-0.1;
+
+            &.card__price--regular {
+                @apply block;
+                @apply font-black;
+                @apply text-[1.1rem];
+                @apply -mb-0.5;
+            }
         }
 
         .card__title {
@@ -16,9 +27,25 @@
             @apply text-[1.4rem] tracking-0.2;
         }
 
+        .card__label {
+            @apply absolute;
+            @apply top-1.25 right-1.5;
+            @apply bg-kk-accent-light;
+            @apply text-dark;
+            @apply px-1 py-[0.2rem];
+            @apply uppercase font-black;
+            @apply tracking-0.2;
+            @apply text-[1.2rem];
+        }
+
         &.card--grid {
             .card__wrapper {
                 @apply p-2;
+                @apply relative;
+            }
+
+            .card__label {
+                @apply top-3.5 right-3.5;
             }
 
             .card__item {
