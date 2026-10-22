@@ -6,6 +6,10 @@ export const MENU_ITEMS: MenuProps['items'] = [
         children: 'Homepage',
     },
     {
+        href: '/about',
+        children: 'About',
+    },
+    {
         href: '/merchandise',
         children: 'Merchandise',
     },
