@@ -6,15 +6,24 @@ import { useMeasure } from 'react-use';
 
 import { Drawer, DrawerContent, DrawerRootProps } from '@/components/shadcn/Drawer';
 import Cart, { CartProps } from '@/components/common/Cart';
-import Button from '@/components/common/Button';
+import Button, { BaseAnchorProps } from '@/components/common/Button';
 import Heading from '@/components/common/Heading';
 
 export type CartDrawerProps = {
     items?: CartProps['items'];
     price?: PropsWithChildren['children'];
+    cta?: Pick<BaseAnchorProps, 'href' | 'target' | 'onClick' | 'children'>;
 } & (Pick<DrawerRootProps, 'open' | 'onOpenChange'> & Pick<CartProps, 'onSubmit' | 'onRemove'>);
 
-const CartDrawer = ({ open, onOpenChange, items, price, onSubmit, onRemove }: CartDrawerProps): React.ReactElement => {
+const CartDrawer = ({
+    cta,
+    open,
+    onOpenChange,
+    items,
+    price,
+    onSubmit,
+    onRemove,
+}: CartDrawerProps): React.ReactElement => {
     const [totalRef, { height, y }] = useMeasure();
 
     let style: undefined | CSSProperties = undefined;
@@ -61,13 +70,14 @@ const CartDrawer = ({ open, onOpenChange, items, price, onSubmit, onRemove }: Ca
                         {price && <p className="uppercase text-[2rem] font-bold tracking-0.1">{price}</p>}
                     </div>
 
-                    <div className="mt-1 text-end">
-                        <Button.Block
-                            as="anchor"
-                            href="#">
-                            Checkout
-                        </Button.Block>
-                    </div>
+                    {cta?.href && (
+                        <div className="mt-1 text-end">
+                            <Button.Block
+                                as="anchor"
+                                {...cta}
+                            />
+                        </div>
+                    )}
                 </div>
             </DrawerContent>
         </Drawer>

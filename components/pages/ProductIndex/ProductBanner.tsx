@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import { useCartStateContext } from '@/store/context';
+
 import Banner, { ProductProps } from '@/components/common/Banner';
 
 export type ProductBannerProps = Pick<
@@ -18,6 +20,8 @@ const ProductBanner = ({
     priceLabel,
     media,
 }: ProductBannerProps): React.ReactElement => {
+    const { setIsOpen, setItems } = useCartStateContext();
+
     return (
         <Banner.Product
             title={title}
@@ -27,9 +31,15 @@ const ProductBanner = ({
             price={price}
             priceLabel={priceLabel}
             media={media}
-
-            onSubmit={() => {
-                console.log('test');
+            onSubmit={(data) => {
+                setItems((prevState) => [
+                    ...prevState,
+                    {
+                        ...data,
+                        cartItemId: new Date().getTime().toString(),
+                    },
+                ]);
+                setIsOpen(true);
             }}
         />
     );

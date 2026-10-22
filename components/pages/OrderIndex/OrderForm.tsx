@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { FORM_GENERAL_REQUIRED_ERROR_MESSAGE } from '@/libs/constants';
@@ -26,7 +28,7 @@ export type OrderFormFields = {
 };
 
 export type OrderFormProps = {
-    onSubmit: (data: OrderFormFields) => void;
+    onSubmit?: (data: OrderFormFields) => void;
 } & Pick<React.HTMLAttributes<HTMLFormElement>, 'className'>;
 
 const OrderForm = ({ onSubmit, className }: OrderFormProps): React.ReactElement => {
@@ -47,7 +49,8 @@ const OrderForm = ({ onSubmit, className }: OrderFormProps): React.ReactElement 
     return (
         <form
             className={className}
-            onSubmit={handleSubmit(onSubmit)}>
+            // onSubmit={handleSubmit(onSubmit)}
+        >
             <Columns gutterY={1}>
                 <Columns.Column md={6}>
                     <Input.Label

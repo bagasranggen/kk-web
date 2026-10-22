@@ -1,21 +1,19 @@
 import React from 'react';
 
-import { BaseIndexPageProps } from '@/libs/@types';
-
-import { CART_ITEMS } from '@/components/common/Cart/index.mockup';
+import { PageIndexProps } from '@/libs/@types';
 
 import Columns from '@/components/common/Columns';
 import Heading from '@/components/common/Heading';
 import Container from '@/components/common/Container';
-import Cart from '@/components/common/Cart';
 import OrderForm from '@/components/pages/OrderIndex/OrderForm';
+import OrderCart from '@/components/pages/OrderIndex/OrderCart';
 
-export type OrderIndexProps = BaseIndexPageProps<'order', {}>;
+export type OrderIndexProps = PageIndexProps<'order', {}>;
 
 const OrderIndex = ({}: OrderIndexProps): React.ReactElement => {
     return (
         <>
-            <Container>
+            <Container className="mt-15 mb-15">
                 <Columns
                     gutterY={4}
                     className="justify-between">
@@ -29,22 +27,14 @@ const OrderIndex = ({}: OrderIndexProps): React.ReactElement => {
                             Order Detail
                         </Heading>
 
-                        <OrderForm
-                            className="mt-3"
-                            onSubmit={() => {
-                                console.log('submit');
-                            }}
-                        />
+                        <OrderForm className="mt-3" />
                     </Columns.Column>
 
                     <Columns.Column
                         className="order-first lg:order-last"
                         lg={4}
                         xl={5}>
-                        <Cart
-                            withQuantity={false}
-                            items={CART_ITEMS}
-                        />
+                        <OrderCart />
                     </Columns.Column>
                 </Columns>
             </Container>

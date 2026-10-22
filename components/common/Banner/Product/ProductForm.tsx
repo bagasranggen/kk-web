@@ -73,7 +73,7 @@ const ProductForm = ({
             title,
             price: price ?? 0,
             qty: 1,
-            cartItemId: new Date().getTime().toString(),
+            // cartItemId: new Date().getTime().toString(),
             stock: stock ?? 0,
             media,
         },

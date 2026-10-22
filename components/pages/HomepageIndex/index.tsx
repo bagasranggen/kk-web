@@ -133,7 +133,7 @@ const HomepageIndex = ({ entries }: HomepageIndexProps): React.ReactElement => {
                                 children: (
                                     <Button.Block
                                         as="anchor"
-                                        href="#"
+                                        href="/merchandise"
                                         size="lg"
                                         color="accent">
                                         View More

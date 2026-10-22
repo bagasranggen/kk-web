@@ -46,10 +46,10 @@ export const Default: Story = {
                 sizes: PRODUCT_SIZES_ITEMS,
                 price: 200000,
                 priceLabel: 'IDR 200,000',
-                onSubmit: (data) => {
-                    console.log('submit');
-                    console.log(data);
-                },
+                // onSubmit: (data) => {
+                //     console.log('submit');
+                //     console.log(data);
+                // },
             },
             otherProducts: CARD_THUMBNAIL_4_ITEMS,
         },

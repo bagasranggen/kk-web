@@ -37,7 +37,7 @@ const Main = ({ footer, menu, children }: MainProps): React.ReactElement => {
             <main>{children}</main>
 
             <CartButton
-                className="fixed border bottom-1 left-1/2 -translate-x-1/2"
+                className="fixed border bottom-1 left-1/2 -translate-x-1/2 z-1040"
                 count={count}
                 onClick={() => setCartIsOpen(true)}>
                 {totalPriceCurrency}
@@ -56,6 +56,11 @@ const Main = ({ footer, menu, children }: MainProps): React.ReactElement => {
                 onOpenChange={setCartIsOpen}
                 items={items}
                 price={totalPriceCurrency}
+                cta={{
+                    href: '/order',
+                    children: 'Checkout',
+                    onClick: () => setCartIsOpen(false),
+                }}
             />
         </>
     );

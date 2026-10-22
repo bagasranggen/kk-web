@@ -52,6 +52,7 @@ const Product = ({
                     sizes={sizes}
                     price={price}
                     priceLabel={priceLabel}
+                    media={media?.thumbnails?.[0]?.media ?? []}
                     onSubmit={onSubmit}
                 />
             </Columns.Column>
