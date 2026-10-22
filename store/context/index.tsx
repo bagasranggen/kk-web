@@ -13,10 +13,8 @@ const ContextProvider = ({ children }: ContextProviderProps): React.ReactElement
         <HistoryStateContextProvider>
             <LayoutStateContextProvider>
                 <NavigationStateContextProvider>
-
                     <CartStateContextProvider>{children}</CartStateContextProvider>
-
-                    </NavigationStateContextProvider>
+                </NavigationStateContextProvider>
             </LayoutStateContextProvider>
         </HistoryStateContextProvider>
     </GlobalStateContextProvider>
