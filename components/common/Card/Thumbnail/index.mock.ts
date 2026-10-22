@@ -29,6 +29,9 @@ export const CARD_THUMBNAIL_4_ITEMS: ThumbnailProps['items'] = createArrayFromNu
                 sizes: '(min-width: 1900px) 23.1053vw, (min-width: 992px) 30.5549vw, (min-width: 768px) 44.7917vw)',
             }),
         ],
+        salePrice: i === 1 ? convertIntToCurrency(400000, true) : undefined,
+        price: convertIntToCurrency(200000, true),
+        title: 'Korekayu Logo ' + (i + 1),
     };
 });
 

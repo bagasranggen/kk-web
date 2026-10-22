@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { BaseIndexPageProps } from '@/libs/@types';
+import { PageIndexProps } from '@/libs/@types';
 
+import Heading from '@/components/common/Heading';
 import Card, { ThumbnailProps } from '@/components/common/Card';
 import Container from '@/components/common/Container';
-import Heading from '@/components/common/Heading';
-import Banner, { ProductProps } from '@/components/common/Banner';
+import ProductBanner, { ProductBannerProps } from '@/components/pages/ProductIndex/ProductBanner';
 
-export type ProductIndexProps = BaseIndexPageProps<
+export type ProductIndexProps = PageIndexProps<
     'product',
     {
         banner?: Pick<
-            ProductProps,
-            'title' | 'description' | 'colors' | 'sizes' | 'price' | 'priceLabel' | 'onSubmit' | 'media'
+            ProductBannerProps,
+            'title' | 'description' | 'colors' | 'sizes' | 'price' | 'priceLabel' | 'media'
         >;
         otherProducts?: ThumbnailProps['items'];
     }
@@ -22,15 +22,15 @@ const ProductIndex = ({ entries }: ProductIndexProps): React.ReactElement => {
     return (
         <>
             {entries?.banner && (
-                <Container>
-                    <Banner.Product {...entries?.banner} />
+                <Container className="mt-15 last:mb-10 last:lg:mb-15">
+                    <ProductBanner {...entries?.banner} />
                 </Container>
             )}
 
             {entries?.otherProducts && entries.otherProducts.length > 0 && (
                 <Container
                     as="section"
-                    className="mt-10 lg:mt-15">
+                    className="mt-10 lg:mt-15 last:mb-10 last:lg:mb-15">
                     <Heading className="uppercase text-[2rem] md:text-[3rem] font-extrabold tracking-0.2 text-center mb-3">
                         You Might interest On
                     </Heading>

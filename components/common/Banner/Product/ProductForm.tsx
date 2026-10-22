@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { FORM_GENERAL_REQUIRED_ERROR_MESSAGE } from '@/libs/constants';

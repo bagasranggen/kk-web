@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 
 import { ArrayStringProps, BaseComponentProps, ElementTagsProps } from '@/libs/@types';
 import { joinArrayString } from '@/libs/utils';
+
 import DynamicWrapper from '@/components/common/DynamicWrapper';
 
 export type ContainerProps = {
