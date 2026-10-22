@@ -17,7 +17,3 @@ export type FragmentTagsProps = ExoticComponent<FragmentProps>;
 export type BreakpointsProps = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl';
 
 export type ParametersProps<Props extends (...args: any[]) => any> = Parameters<Props>[0];
-
-export type PageIndexProps<Props = unknown> = {
-    entries: Props;
-};

@@ -8,13 +8,16 @@ import Card, { ThumbnailProps } from '@/components/common/Card';
 import List from '@/components/common/List';
 import Button, { BaseAnchorProps } from '@/components/common/Button';
 
-export type ProductListingIndexProps = PageIndexProps<{
-    categories?: {
-        isActive?: boolean;
-        cta: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
-    }[];
-    products?: ThumbnailProps['items'];
-}>;
+export type ProductListingIndexProps = PageIndexProps<
+    'productListing',
+    {
+        categories?: {
+            isActive?: boolean;
+            cta: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
+        }[];
+        products?: ThumbnailProps['items'];
+    }
+>;
 
 const ProductListingIndex = ({ entries }: ProductListingIndexProps): React.ReactElement => {
     return (

@@ -12,20 +12,23 @@ import HomepageSchedule, { HomepageScheduleProps } from '@/components/pages/Home
 import HomepageDiscography, { HomepageDiscographyProps } from '@/components/pages/HomepageIndex/HomepageDiscography';
 import HomepageBanner, { HomepageBannerProps } from '@/components/pages/HomepageIndex/HomepageBanner';
 
-export type HomepageIndexProps = PageIndexProps<{
-    banner?: HomepageBannerProps['items'];
-    schedule?: HomepageScheduleProps['items'];
-    discography?: HomepageDiscographyProps;
-    merchandise?: ThumbnailProps['items'];
-    contact?: {
-        description?: React.ReactNode;
-        social?: SocialMediaProps['items'];
-        join?: {
+export type HomepageIndexProps = PageIndexProps<
+    'homepage',
+    {
+        banner?: HomepageBannerProps['items'];
+        schedule?: HomepageScheduleProps['items'];
+        discography?: HomepageDiscographyProps;
+        merchandise?: ThumbnailProps['items'];
+        contact?: {
             description?: React.ReactNode;
-            cta?: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
+            social?: SocialMediaProps['items'];
+            join?: {
+                description?: React.ReactNode;
+                cta?: Pick<BaseAnchorProps, 'href' | 'target' | 'children'>;
+            };
         };
-    };
-}>;
+    }
+>;
 
 const HomepageIndex = ({ entries }: HomepageIndexProps): React.ReactElement => {
     return (
