@@ -2,7 +2,7 @@
 
 import React, { createContext, PropsWithChildren, Suspense, useState } from 'react';
 
-// import { NavigationEvents } from '@/libs/hooks';
+import { NavigationEvents } from '@/libs/hooks';
 
 export type HistoryState = {
     routeLength: number;
@@ -25,24 +25,24 @@ export const HistoryStateContextProvider = ({ children }: PropsWithChildren) => 
 
     return (
         <>
-            {/*<Suspense fallback={null}>*/}
-            {/*    <NavigationEvents*/}
-            {/*        endHandler={(navigation) => {*/}
-            {/*            let url = navigation?.pathname;*/}
-            {/*            if (navigation?.searchParams && navigation?.searchParams.size > 0) {*/}
-            {/*                url += `?${navigation.searchParams}`;*/}
-            {/*            }*/}
+            <Suspense fallback={null}>
+                {/*<NavigationEvents*/}
+                {/*    endHandler={(navigation) => {*/}
+                {/*        let url = navigation?.pathname;*/}
+                {/*        if (navigation?.searchParams && navigation?.searchParams.size > 0) {*/}
+                {/*            url += `?${navigation.searchParams}`;*/}
+                {/*        }*/}
 
-            {/*            setRoutePrevious(routeCurrent);*/}
-            {/*            if (url) setRouteCurrent(url);*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*    <NavigationEvents*/}
-            {/*        endHandler={() => {*/}
-            {/*            setRouteLength((prevState) => prevState + 1);*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*</Suspense>*/}
+                {/*        setRoutePrevious(routeCurrent);*/}
+                {/*        if (url) setRouteCurrent(url);*/}
+                {/*    }}*/}
+                {/*/>*/}
+                <NavigationEvents
+                    endHandler={() => {
+                        setRouteLength((prevState) => prevState + 1);
+                    }}
+                />
+            </Suspense>
 
             <HistoryStateContext.Provider value={defaultContext}>{children}</HistoryStateContext.Provider>
         </>

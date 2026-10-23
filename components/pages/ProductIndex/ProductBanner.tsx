@@ -20,7 +20,7 @@ const ProductBanner = ({
     priceLabel,
     media,
 }: ProductBannerProps): React.ReactElement => {
-    const { setIsOpen, setItems } = useCartStateContext();
+    const { setIsOpen, addCartItemHandler } = useCartStateContext();
 
     return (
         <Banner.Product
@@ -32,13 +32,10 @@ const ProductBanner = ({
             priceLabel={priceLabel}
             media={media}
             onSubmit={(data) => {
-                setItems((prevState) => [
-                    ...prevState,
-                    {
-                        ...data,
-                        cartItemId: new Date().getTime().toString(),
-                    },
-                ]);
+                addCartItemHandler({
+                    ...data,
+                    cartItemId: new Date().getTime().toString(),
+                });
                 setIsOpen(true);
             }}
         />

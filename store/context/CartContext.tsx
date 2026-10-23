@@ -24,6 +24,7 @@ export type CartState = {
     setItems: React.Dispatch<React.SetStateAction<ProductFormFields[]>>;
     totalPrice: number;
     totalPriceCurrency: React.ReactNode;
+    addCartItemHandler: (props: ProductFormFields) => void;
     updateCartQuantityHandler: (props: CartItemFormFields) => void;
     count?: number;
 };
@@ -35,6 +36,7 @@ export const CartStateContext = createContext<CartState>({
     setItems: () => {},
     totalPrice: 0,
     totalPriceCurrency: '',
+    addCartItemHandler: () => {},
     updateCartQuantityHandler: () => {},
     count: 0,
 });
@@ -50,7 +52,7 @@ export const CartStateContextProvider = ({ children }: PropsWithChildren) => {
 
     const updateCartQuantityHandler = (props: CartItemFormFields) => {
         setItems((prevState) => {
-            let tmp = [...prevState];
+            const tmp = [...prevState];
 
             const updateItemIndex = tmp.findIndex((item) => item.cartItemId === props.cartItemId);
             let updateItem = tmp.find((item) => item.cartItemId === props.cartItemId);
@@ -67,25 +69,25 @@ export const CartStateContextProvider = ({ children }: PropsWithChildren) => {
                 tmp.splice(updateItemIndex, 1);
             }
 
-            // setLocalStorage({ key: CART_KEY, value: JSON.stringify(tmp), expiryInMs: CART_EXPIRED_TIME });
+            setLocalStorage({ key: CART_KEY, value: JSON.stringify(tmp), expiryInMs: CART_EXPIRED_TIME });
 
             return tmp;
         });
     };
 
-    // const addCartItemHandler = (item: ParametersProps<CartState['addCartItemHandler']>) => {
-    //     if (!item) return;
-    //
-    //     setItems((prevState) => {
-    //         let tmp = [...prevState];
-    //
-    //         tmp.push(item);
-    //
-    //         setLocalStorage({ key: CART_KEY, value: JSON.stringify(tmp), expiryInMs: CART_EXPIRED_TIME });
-    //
-    //         return tmp;
-    //     });
-    // };
+    const addCartItemHandler = (item: ParametersProps<CartState['addCartItemHandler']>) => {
+        if (!item) return;
+
+        setItems((prevState) => {
+            const tmp = [...prevState];
+
+            tmp.push(item);
+
+            setLocalStorage({ key: CART_KEY, value: JSON.stringify(tmp), expiryInMs: CART_EXPIRED_TIME });
+
+            return tmp;
+        });
+    };
 
     const lineItems = useMemo(() => {
         const data: CartState['items'] = [];
@@ -132,21 +134,21 @@ export const CartStateContextProvider = ({ children }: PropsWithChildren) => {
         totalPrice: totalPrice,
         totalPriceCurrency: convertIntToCurrency(totalPrice, true),
         updateCartQuantityHandler,
-        // addCartItemHandler,
+        addCartItemHandler,
     };
 
     return (
         <>
-            {/*<Suspense fallback={null}>*/}
-            {/*    <NavigationEvents*/}
-            {/*        endHandler={() => {*/}
-            {/*            if (routeLength > 0) return;*/}
+            <Suspense fallback={null}>
+                <NavigationEvents
+                    endHandler={() => {
+                        if (routeLength > 0) return;
 
-            {/*            const cartItemsStringify = getLocalStorage(CART_KEY);*/}
-            {/*            if (cartItemsStringify) setItems(JSON.parse(cartItemsStringify));*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*</Suspense>*/}
+                        const cartItemsStringify = getLocalStorage(CART_KEY);
+                        if (cartItemsStringify) setItems(JSON.parse(cartItemsStringify));
+                    }}
+                />
+            </Suspense>
 
             <CartStateContext.Provider value={defaultContext}>{children}</CartStateContext.Provider>
         </>
