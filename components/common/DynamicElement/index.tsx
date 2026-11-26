@@ -1,11 +1,11 @@
 import React, { createElement, FunctionComponent, PropsWithChildren } from 'react';
 
-import { ElementTagsProps } from '@/libs/@types';
+import { ElementTagsProps, FragmentTagsProps } from '@/libs/@types';
 import { getEnv } from '@/libs/utils';
 
 export type DynamicElementProps<Props> = {
     handles?: string;
-    component?: FunctionComponent<Props> | ElementTagsProps;
+    component?: FunctionComponent<Props> | ElementTagsProps | FragmentTagsProps;
     props?: Props;
 } & PropsWithChildren;
 

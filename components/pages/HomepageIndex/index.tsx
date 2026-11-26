@@ -7,8 +7,8 @@ import Button, { BaseAnchorProps } from '@/components/common/Button';
 import Columns from '@/components/common/Columns';
 import Card, { ThumbnailProps } from '@/components/common/Card';
 import List, { SocialMediaProps } from '@/components/common/List';
+import Schedule, { ScheduleProps } from '@/components/common/Schedule';
 import Container from '@/components/common/Container';
-import HomepageSchedule, { HomepageScheduleProps } from '@/components/pages/HomepageIndex/HomepageSchedule';
 import HomepageDiscography, { HomepageDiscographyProps } from '@/components/pages/HomepageIndex/HomepageDiscography';
 import HomepageBanner, { HomepageBannerProps } from '@/components/pages/HomepageIndex/HomepageBanner';
 
@@ -16,7 +16,7 @@ export type HomepageIndexProps = PageIndexProps<
     'homepage',
     {
         banner?: HomepageBannerProps['items'];
-        schedule?: HomepageScheduleProps['items'];
+        schedule?: ScheduleProps['items'];
         discography?: HomepageDiscographyProps;
         merchandise?: ThumbnailProps['items'];
         contact?: {
@@ -57,7 +57,7 @@ const HomepageIndex = ({ entries }: HomepageIndexProps): React.ReactElement => {
                         </Heading>
                     </Container>
 
-                    <HomepageSchedule
+                    <Schedule
                         className="mt-2 md:mt-4"
                         items={entries.schedule}
                     />

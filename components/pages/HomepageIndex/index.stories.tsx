@@ -3,13 +3,18 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
 
 import HomepageIndex from './index';
-import HomepageSchedule from '@/components/pages/HomepageIndex/HomepageSchedule';
 import HomepageDiscography from '@/components/pages/HomepageIndex/HomepageDiscography';
 import HomepageDiscographyItem from '@/components/pages/HomepageIndex/HomepageDiscographyItem';
 import HomepageBanner from '@/components/pages/HomepageIndex/HomepageBanner';
 import Container from '@/components/common/Container';
 
-import { BANNER_ITEMS, LIST_SCHEDULE } from '@/components/pages/HomepageIndex/index.mock';
+import {
+    BANNER_ITEMS,
+    DISCOGRAPHY_ITEMS,
+    FEATURED_DISCOGRAPHY_ITEM,
+} from '@/components/pages/HomepageIndex/index.mock';
+import { SCHEDULE_ITEMS_3 } from '@/components/common/Schedule/index.mockup';
+import { CARD_THUMBNAIL_3_ITEMS } from '@/components/common/Card/Thumbnail/index.mock';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -33,8 +38,15 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
     args: {
-        banner: BANNER_ITEMS,
-        schedule: LIST_SCHEDULE,
+        entries: {
+            banner: BANNER_ITEMS,
+            schedule: SCHEDULE_ITEMS_3,
+            discography: {
+                featured: FEATURED_DISCOGRAPHY_ITEM,
+                discographies: DISCOGRAPHY_ITEMS,
+            },
+            merchandise: CARD_THUMBNAIL_3_ITEMS,
+        },
     },
 };
 
@@ -51,18 +63,10 @@ export const Banner: StoryObj<typeof HomepageBanner> = {
     },
 };
 
-export const Schedule: StoryObj<typeof HomepageSchedule> = {
-    args: {
-        items: LIST_SCHEDULE,
-    },
-    render: (args) => {
-        return <HomepageSchedule {...args} />;
-    },
-};
-
 export const DiscographyItemLarge: StoryObj<typeof HomepageDiscographyItem> = {
     args: {
         size: 'lg',
+        ...FEATURED_DISCOGRAPHY_ITEM,
     },
     render: (args) => {
         return (
@@ -74,7 +78,10 @@ export const DiscographyItemLarge: StoryObj<typeof HomepageDiscographyItem> = {
 };
 
 export const DiscographyItemRegular: StoryObj<typeof HomepageDiscographyItem> = {
-    args: {},
+    args: {
+        size: 'md',
+        ...FEATURED_DISCOGRAPHY_ITEM,
+    },
     render: (args) => {
         return (
             <Container type="fluid">
@@ -85,11 +92,14 @@ export const DiscographyItemRegular: StoryObj<typeof HomepageDiscographyItem> = 
 };
 
 export const Discography: StoryObj<typeof HomepageDiscography> = {
-    args: {},
+    args: {
+        featured: FEATURED_DISCOGRAPHY_ITEM,
+        discographies: DISCOGRAPHY_ITEMS,
+    },
     render: (args) => {
         return (
             <Container type="fluid">
-                <HomepageDiscography {...args} />{' '}
+                <HomepageDiscography {...args} />
             </Container>
         );
     },

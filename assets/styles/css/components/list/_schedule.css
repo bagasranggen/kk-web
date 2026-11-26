@@ -20,6 +20,8 @@
                 }
 
                 .list__title,
+                .list__location,
+                .list__heading,
                 .list__label {
                     @apply transition-colors;
                 }
@@ -30,8 +32,13 @@
 
                 &:hover {
                     .list__title,
-                    a:not(:hover) {
+                    div > .list__location,
+                    div[class*='column'] > .list__heading {
                         @apply text-light;
+                    }
+
+                    a:not(:hover) {
+                        @apply text-kk-accent-light;
                     }
 
                     .list__label {

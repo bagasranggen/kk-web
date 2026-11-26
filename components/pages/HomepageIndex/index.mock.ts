@@ -1,14 +1,9 @@
 import { createArrayFromNumber, createBackgroundImage, createPicsumImage, createPictureItem } from '@/libs/factories';
 
-import { HomepageScheduleProps } from '@/components/pages/HomepageIndex/HomepageSchedule';
 import { HomepageBannerProps } from '@/components/pages/HomepageIndex/HomepageBanner';
 import { HomepageDiscographyProps } from '@/components/pages/HomepageIndex/HomepageDiscography';
 
 import { LIST_SOCIAL_MEDIA } from '@/components/common/List/SocialMedia/index.mock';
-
-export const LIST_SCHEDULE: HomepageScheduleProps['items'] = createArrayFromNumber(4).map((_) => {
-    return {};
-});
 
 export const BANNER_ITEMS: HomepageBannerProps['items'] = createArrayFromNumber(4).map((_, i) => {
     const isOdd = i % 2 === 0;
