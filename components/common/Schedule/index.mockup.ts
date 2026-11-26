@@ -6,11 +6,11 @@ export const SCHEDULE_ITEMS_3: ScheduleProps['items'] = createArrayFromNumber(3)
 
     return {
         location: {
-            href: !isOdd ? '#' : undefined,
+            href: !isOdd ? 'https://maps.app.goo.gl/qJD8Uwh1h5RRjnyt5' : undefined,
             children: 'JNM Block',
         },
         event: {
-            href: !isOdd ? '#' : undefined,
+            href: !isOdd ? 'https://www.instagram.com/korekayu' : undefined,
             children: 'ARTJOG 2027',
         },
         date: `${2 + i} April 2026`,
@@ -24,11 +24,11 @@ export const SCHEDULE_ITEMS_6: ScheduleProps['items'] = createArrayFromNumber(6)
 
     return {
         location: {
-            href: !isOdd ? '#' : undefined,
+            href: !isOdd ? 'https://maps.app.goo.gl/qJD8Uwh1h5RRjnyt5' : undefined,
             children: 'JNM Block',
         },
         event: {
-            href: !isOdd ? '#' : undefined,
+            href: !isOdd ? 'https://www.instagram.com/korekayu' : undefined,
             children: 'ARTJOG 2027',
         },
         date: `${2 + i} April 2026`,
