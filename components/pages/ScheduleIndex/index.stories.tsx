@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
 
 import ScheduleIndex from './index';
-import { CARD_THUMBNAIL_9_ITEMS } from '@/components/common/Card/Thumbnail/index.mock';
 import { SCHEDULE_ITEMS_3, SCHEDULE_ITEMS_6 } from '@/components/common/Schedule/index.mockup';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
