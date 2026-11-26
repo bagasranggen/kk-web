@@ -65,7 +65,7 @@ const HomepageIndex = ({ entries }: HomepageIndexProps): React.ReactElement => {
                     <Container className="mt-6 text-center">
                         <Button.Block
                             as="anchor"
-                            href="#"
+                            href="/schedule"
                             color="accent"
                             size="lg">
                             Check More Schedule
