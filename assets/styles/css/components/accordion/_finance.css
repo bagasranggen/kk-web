@@ -1,0 +1,44 @@
+@layer components {
+    .accordion.accordion--finance {
+        .accordion__item {
+            @apply transition-colors;
+            @apply border-t last:border-b;
+            @apply data-open:bg-kk-accent-light/30;
+            /*@apply data-open:border-t-kk-accent-light/10;*/
+            /*@apply data-open:[&+div]:border-t-kk-accent-light/10; !* change border top color for next element *!*/
+            /*@apply last:data-open:border-b-kk-accent-light/10; !* change border top color for last element *!*/
+            @apply data-open:border-t-dark/20;
+            @apply data-open:[&+div]:border-t-dark/20; /* change border top color for next element */
+            @apply last:data-open:border-b-dark/20; /* change border top color for last element */
+        }
+
+        .accordion__heading {
+            @apply py-1;
+            @apply items-center;
+            @apply uppercase text-[2.5rem] font-semibold tracking-0.4;
+
+            svg {
+                @apply pointer-events-none;
+
+                path:nth-child(2) {
+                    @apply origin-center;
+                    @apply transition-transform;
+                }
+            }
+        }
+
+        .accordion__info {
+            p {
+                @apply flex items-center;
+                @apply not-last:mb-0.25;
+                @apply font-light;
+                @apply text-[1.8rem] tracking-0.2;
+
+                span {
+                    @apply font-semibold text-[1.4rem] uppercase tracking-0.2;
+                    @apply me-0.5;
+                }
+            }
+        }
+    }
+}

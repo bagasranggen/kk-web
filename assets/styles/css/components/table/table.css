@@ -1,0 +1,11 @@
+@import './_finance.css';
+
+@layer components {
+    .table {
+        @apply w-full max-w-full;
+    }
+
+    .table-responsive {
+        @apply w-full overflow-x-auto;
+    }
+}

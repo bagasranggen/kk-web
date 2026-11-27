@@ -1,0 +1,29 @@
+@layer components {
+    .table.table--finance {
+        tbody tr {
+            @apply border-t;
+
+            /*&:last-child*/
+
+            td {
+                @apply py-1.5;
+            }
+
+            td:nth-child(1),
+            td:nth-child(2),
+            td:nth-child(3) {
+                @apply uppercase;
+                @apply font-semibold;
+                @apply text-[1.4rem];
+                @apply tracking-0.3;
+            }
+
+            td:last-child {
+                @apply text-right;
+                @apply font-light;
+                @apply text-[1.8rem];
+                @apply tracking-[0.15rem];
+            }
+        }
+    }
+}

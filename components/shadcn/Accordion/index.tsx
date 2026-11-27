@@ -1,8 +1,11 @@
+import { Fragment } from 'react';
+
 import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
 import { cn } from 'cn';
 import { ChevronDownIcon } from 'lucide-react';
 
 import DynamicElement, { DynamicElementProps } from '@/components/common/DynamicElement';
+import Container from '@/components/common/Container';
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
     return (
@@ -18,7 +21,7 @@ function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
     return (
         <AccordionPrimitive.Item
             data-slot="accordion-item"
-            className={cn('not-last:border-b', className)}
+            className={cn(className)}
             {...props}
         />
     );
@@ -26,36 +29,39 @@ function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
 
 export type AccordionTriggerProps = {
     customIcon?: DynamicElementProps<{}>;
+    container?: boolean;
 } & AccordionPrimitive.Trigger.Props;
 
-function AccordionTrigger({ className, children, customIcon, ...props }: AccordionTriggerProps) {
+function AccordionTrigger({ className, children, customIcon, container, ...props }: AccordionTriggerProps) {
     let CustomIcon = null;
     if (customIcon?.component) CustomIcon = <DynamicElement {...customIcon} />;
 
     return (
-        <AccordionPrimitive.Header className="flex">
-            <AccordionPrimitive.Trigger
-                data-slot="accordion-trigger"
-                className={cn(
-                    'group/accordion-trigger relative transition-all outline-none',
-                    'cursor-pointer',
-                    'flex flex-1 items-start justify-between',
-                    'aria-disabled:pointer-events-none aria-disabled:opacity-50',
-                    '**:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-3 **:data-[slot=accordion-trigger-icon]:text-muted-foreground',
-                    className
-                )}
-                {...props}>
-                {children}
-                {!customIcon && (
-                    <ChevronDownIcon
-                        data-slot="accordion-trigger-icon"
-                        className="pointer-events-none shrink-0 transition-transform origin-center group-aria-expanded/accordion-trigger:rotate-180"
-                        strokeWidth={1}
-                    />
-                )}
-                {CustomIcon}
-            </AccordionPrimitive.Trigger>
-        </AccordionPrimitive.Header>
+        <DynamicElement component={container ? Container : Fragment}>
+            <AccordionPrimitive.Header className="flex">
+                <AccordionPrimitive.Trigger
+                    data-slot="accordion-trigger"
+                    className={cn(
+                        'group/accordion-trigger relative transition-all outline-none',
+                        'cursor-pointer text-left',
+                        'flex flex-1 justify-between',
+                        'aria-disabled:pointer-events-none aria-disabled:opacity-50',
+                        '**:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-3 **:data-[slot=accordion-trigger-icon]:text-muted-foreground',
+                        className
+                    )}
+                    {...props}>
+                    {children}
+                    {!customIcon && (
+                        <ChevronDownIcon
+                            data-slot="accordion-trigger-icon"
+                            className="pointer-events-none shrink-0 transition-transform origin-center group-aria-expanded/accordion-trigger:rotate-180"
+                            strokeWidth={1}
+                        />
+                    )}
+                    {CustomIcon}
+                </AccordionPrimitive.Trigger>
+            </AccordionPrimitive.Header>
+        </DynamicElement>
     );
 }
 
@@ -67,7 +73,7 @@ function AccordionContent({ className, children, ...props }: AccordionPrimitive.
             {...props}>
             <div
                 className={cn(
-                    'h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4',
+                    'h-(--accordion-panel-height) data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground',
                     className
                 )}>
                 {children}

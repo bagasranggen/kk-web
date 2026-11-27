@@ -1,3 +1,4 @@
+@import './accordion/accordion.css';
 @import './banner/banner.css';
 @import './button/button.css';
 @import './card/card.css';
@@ -5,6 +6,7 @@
 @import './input/input.css';
 @import './list/list.css';
 @import './modal/modal.css';
+@import './table/table.css';
 
 @import './_cart.css';
 @import './_columns.css';
